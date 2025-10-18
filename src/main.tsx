@@ -1,0 +1,16 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { HeroUIProvider } from "@heroui/react";
+import { ThemeProvider } from "next-themes";
+import "@styles/index.css";
+import App from "./App.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <HeroUIProvider>
+      <ThemeProvider attribute="class" defaultTheme="system">
+        <App />
+      </ThemeProvider>
+    </HeroUIProvider>
+  </StrictMode>
+);

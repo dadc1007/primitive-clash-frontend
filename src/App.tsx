@@ -1,7 +1,13 @@
-import HomePage from "./pages/HomePage";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
+import { AuthProvider } from "@providers/AuthContext";
 
 function App() {
-  return <HomePage />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

@@ -1,4 +1,30 @@
-# Logs
+# -----------------------------------------------------------------
+# BUILD ARTEFACTS & BUNDLERS (Vite / Webpack / etc.)
+# -----------------------------------------------------------------
+# Node dependencies folder
+node_modules/
+
+# Vite build output directories
+/dist
+/dist-ssr
+/coverage
+/public/dist/
+
+# Traditional build outputs (common safety net)
+/build
+/out
+
+# -----------------------------------------------------------------
+# DEPENDENCY LOCK FILES
+# -----------------------------------------------------------------
+package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
+
+# -----------------------------------------------------------------
+# LOGS, CACHE, AND DEBUG
+# -----------------------------------------------------------------
+# Runtime logs
 logs
 *.log
 npm-debug.log*
@@ -7,18 +33,33 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Environment and secrets
+.env
+.env.*.local
+.DS_Store
+
+# Temporary files and cache
+.eslintcache
+.cache
+.npm
+*.tsbuildinfo  # TypeScript build info (Vite/TS)
 *.local
 
-# Editor directories and files
+# -----------------------------------------------------------------
+# IDE AND EDITOR FILES (VS Code, IntelliJ)
+# -----------------------------------------------------------------
+# VS Code
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/settings.json 
+
+# IntelliJ / WebStorm
+.idea/
+
+# Windows/macOS/Linux files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.swp
+*.bak

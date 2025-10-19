@@ -21,11 +21,14 @@ export const responseErrorInterceptor = async (
 
     handleErrorByStatus(status, data, error.config?.url);
 
+    const specificErrorMessage =
+      data?.message || (data as any)?.error || "Error en la petición";
+
     throw new ApiError(
       status,
-      data?.message || "Error en la petición",
-      data?.code,
-      data?.details
+      specificErrorMessage,
+      (data as any)?.code,
+      (data as any)?.details
     );
   } else if (error.request) {
     logError("Error de red:", error.message);

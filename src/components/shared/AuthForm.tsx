@@ -1,6 +1,7 @@
-import { Alert, Button, Form, Link } from "@heroui/react";
+import { Alert, Button, Form } from "@heroui/react";
 import React, { type FormEvent } from "react";
 import type { ApiError } from "@lib";
+import { Link } from "react-router-dom";
 
 interface AuthFormProps {
   title: string;
@@ -38,13 +39,7 @@ export default function AuthForm({
         {error && (
           <Alert
             color="danger"
-            title={
-              error.status === 401
-                ? "Correo o contraseña incorrectos"
-                : error.status === 0
-                ? "No se pudo conectar con el servidor"
-                : error.message || "Ocurrió un error inesperado"
-            }
+            title={error.message || "Ocurrió un error inesperado."}
           />
         )}
 
@@ -64,9 +59,8 @@ export default function AuthForm({
         <p className="text-sm text-muted-foreground">
           {footerText}{" "}
           <Link
-            href={footerLinkHref}
+            to={footerLinkHref}
             className="font-semibold text-primary hover:underline"
-            size="sm"
           >
             {footerLinkText}
           </Link>

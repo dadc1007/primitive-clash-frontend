@@ -9,8 +9,9 @@ export default function LoginBanner() {
           PRIMITIVE <br /> CLASH
         </>
       }
-      slogan="Domina la arena con estrategia y poder primitivo."
+      slogan="Domina la arena con estrategia y poder primitivo"
       imageUrl={prehistoricWarrior}
+      type="login"
     />
   );
 }

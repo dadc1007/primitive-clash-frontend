@@ -19,7 +19,7 @@ export default function HomePage() {
         <Button size="lg" onPress={() => navigate("/login")}>
           Iniciar Sesión
         </Button>
-        <Button color="secondary" size="lg">
+        <Button color="secondary" size="lg" onPress={() => navigate("/signup")}>
           Crear cuenta
         </Button>
       </div>

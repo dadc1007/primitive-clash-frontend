@@ -4,16 +4,17 @@ import { useAuth } from "@hooks";
 import { logError } from "@utils";
 import { type FormEvent, useState } from "react";
 
-export default function LoginForm() {
+export default function SignupForm() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading, error } = useAuth();
+  const { signup, isLoading, error } = useAuth();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
-      await login({ email, password });
+      await signup({ username, email, password });
     } catch (err) {
       logError("Error en login", err);
     }
@@ -21,12 +22,12 @@ export default function LoginForm() {
 
   return (
     <AuthForm
-      title="BIENVENIDO DE VUELTA"
-      subtitle="Ingresa tus credenciales para continuar la batalla"
-      buttonText={isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
-      footerText="¿No tienes una cuenta?"
-      footerLinkHref="/signup"
-      footerLinkText="Regístrate aquí"
+      title="Crea tu cuenta"
+      subtitle="Únete a miles de guerreros en la arena"
+      buttonText={isLoading ? "Creando cuenta..." : "Crear cuenta"}
+      footerText="¿Ya tienes una cuenta?"
+      footerLinkHref="/login"
+      footerLinkText="Inicia sesión"
       onSubmit={handleSubmit}
       isLoading={isLoading}
       error={error}
@@ -34,6 +35,18 @@ export default function LoginForm() {
       <Input
         isRequired
         isDisabled={isLoading}
+        label="Usuario"
+        labelPlacement="outside"
+        placeholder="Ingresa tu usuario"
+        type="text"
+        variant="faded"
+        value={username}
+        onValueChange={setUsername}
+      />
+      <Input
+        isRequired
+        isDisabled={isLoading}
+        errorMessage="Por favor ingresa un correo electrónico válido"
         label="Correo"
         labelPlacement="outside"
         placeholder="Ingresa tu correo"

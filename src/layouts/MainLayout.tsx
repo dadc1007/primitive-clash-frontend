@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Header } from "@components/shared";
 
 interface MainLayoutProps {
   content: ReactNode;
@@ -6,13 +7,9 @@ interface MainLayoutProps {
 
 export default function MainLayout({ content }: Readonly<MainLayoutProps>) {
   return (
-    <div
-      className="min-h-screen relative overflow-hidden bg-gradient-to-b 
-             from-[var(--primary)] 
-             via-[color-mix(in_oklab,var(--primary)_85%,#000000)] 
-             to-[color-mix(in_oklab,var(--primary)_75%,#000000)]"
-    >
-      <div className="max-w-5xl mx-auto px-4 py-6">{content}</div>
+    <div className="min-h-screen relative overflow-hidden">
+      <Header />
+      <div className="max-w-4xl mx-auto px-4 py-6">{content}</div>
     </div>
   );
 }

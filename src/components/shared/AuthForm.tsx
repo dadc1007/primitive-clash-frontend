@@ -60,7 +60,7 @@ export default function AuthForm({
           {footerText}{" "}
           <Link
             to={footerLinkHref}
-            className="font-semibold text-primary hover:underline"
+            className="font-semibold text-primary-foreground hover:underline"
           >
             {footerLinkText}
           </Link>

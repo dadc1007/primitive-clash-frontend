@@ -37,7 +37,6 @@ export default function CardsPage() {
             <Button
               size="lg"
               variant="light"
-              className="text-primary-foreground"
               startContent={
                 <FontAwesomeIcon icon={["fas", "arrow-left"]}></FontAwesomeIcon>
               }
@@ -45,7 +44,7 @@ export default function CardsPage() {
               Volver
             </Button>
             <h2
-              className={`text-5xl font-bold text-primary-foreground tracking-tighter absolute left-1/2 -translate-x-1/2 z-10`}
+              className={`text-5xl font-bold tracking-tighter absolute left-1/2 -translate-x-1/2 z-10`}
               style={{ fontFamily: "var(--font-bebas)" }}
             >
               Mi mazo
@@ -58,25 +57,14 @@ export default function CardsPage() {
                 color="default"
                 size="lg"
                 label="Cargando tu mazo..."
-                className="text-primary-foreground"
-                classNames={{
-                  indicator: "text-primary-foreground",
-                  track: "text-primary-foreground/10",
-                }}
               />
             </div>
           )}
 
           {!isLoading && (isError || !data) && (
             <div className="flex flex-col items-center justify-center gap-1 h-[70vh]">
-              <FontAwesomeIcon
-                icon={["fas", "xmark"]}
-                size="3x"
-                className="text-primary-foreground"
-              />
-              <p className="text-primary-foreground">
-                Hubo un error al cargar el mazo. Intenta nuevamente.
-              </p>
+              <FontAwesomeIcon icon={["fas", "xmark"]} size="3x" />
+              <p>Hubo un error al cargar el mazo. Intenta nuevamente.</p>
             </div>
           )}
 
@@ -84,7 +72,7 @@ export default function CardsPage() {
           {!isError && data && (
             <div className="space-y-10">
               <div className="grid grid-cols-4 gap-6">{gameCards}</div>
-              <div className="flex items-center justify-center gap-3 border-2 rounded-large border-amber-600/50 bg-gradient-to-br from-stone-800/90 to-stone-900/90 p-4 text-center backdrop-blur-sm text-white">
+              <div className="flex items-center justify-center gap-3 p-4 text-center text-white border-2 rounded-large glass-panel-amber">
                 <p>Costo medio de elixir: {data.averageElixirCost}</p>
                 <div className="h-4 w-4">
                   <Elixir />

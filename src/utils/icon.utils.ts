@@ -1,4 +1,10 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faXmark,
+  faTrophy,
+  faCoins,
+  faGem,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faArrowLeft, faXmark);
+library.add(faArrowLeft, faXmark, faTrophy, faCoins, faGem);

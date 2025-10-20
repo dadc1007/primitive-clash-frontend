@@ -19,7 +19,7 @@ export interface UseAuthReturn {
 }
 
 export const useAuth = () => {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState<AuthSuccessResponse | null>(() => {
     const savedUser = localStorage.getItem("user_data");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -32,7 +32,7 @@ export const useAuth = () => {
     try {
       const userData = await loginMutation.mutateAsync(credentials);
       setUser(userData);
-      //   navigate("/dashboard");
+      navigate("/collection");
       return userData;
     } catch (error) {
       throw error;
@@ -53,7 +53,7 @@ export const useAuth = () => {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("user_data");
     setUser(null);
-    // navigate("/login");
+    navigate("/login");
   };
 
   return {

@@ -5,6 +5,22 @@ import {
   faTrophy,
   faCoins,
   faGem,
+  faMagnifyingGlass,
+  faLayerGroup,
+  faStore,
+  faUsers,
+  faClockRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faArrowLeft, faXmark, faTrophy, faCoins, faGem);
+library.add(
+  faArrowLeft,
+  faXmark,
+  faTrophy,
+  faCoins,
+  faGem,
+  faMagnifyingGlass,
+  faLayerGroup,
+  faStore,
+  faUsers,
+  faClockRotateLeft
+);

@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Avatar, Badge, Card } from "@heroui/react";
+import { Avatar, Badge, Button, Card } from "@heroui/react";
 import { useAuth } from "@hooks";
 import prehistoricWarrior from "@assets/prehistoric-warrior-avatar.jpg";
 
 export default function Header() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <header className="relative z-10 p-4 bg-background-secondary border-b-1 border-muted">
@@ -52,6 +52,15 @@ export default function Header() {
             <FontAwesomeIcon icon={["fas", "gem"]} className="text-gems" />
             <span className="font-bold text-foreground">{user?.gems}</span>
           </Card>
+          <Button
+            isIconOnly
+            color="danger"
+            variant="light"
+            size="lg"
+            onPress={logout}
+          >
+            <FontAwesomeIcon icon={["fas", "arrow-right-from-bracket"]} />
+          </Button>
         </div>
       </div>
     </header>

@@ -22,7 +22,7 @@ export default function CardsPage() {
   const gameCards = data?.cards.map((card) => (
     <GameCard
       key={card.playerCardId}
-      imageUrl={primitiveWarrior}
+      imageUrl={card.imageUrl}
       level={card.level}
       rarity={card.rarity}
       elixir={card.elixirCost}

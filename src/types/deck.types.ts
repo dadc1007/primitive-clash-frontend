@@ -13,4 +13,5 @@ export interface CardInDeckResponse {
   rarity: CardRarity;
   elixirCost: number;
   level: number;
+  imageUrl: string;
 }

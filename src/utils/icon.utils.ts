@@ -10,6 +10,7 @@ import {
   faStore,
   faUsers,
   faClockRotateLeft,
+  faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -22,5 +23,6 @@ library.add(
   faLayerGroup,
   faStore,
   faUsers,
-  faClockRotateLeft
+  faClockRotateLeft,
+  faArrowRightFromBracket
 );

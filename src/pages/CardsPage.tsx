@@ -1,5 +1,4 @@
 import { Elixir, GameCard } from "@components/shared";
-import primitiveWarrior from "@assets/prehistoric-warrior.jpg";
 import { Button, CircularProgress } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth, useDeck } from "@hooks";
@@ -22,7 +21,7 @@ export default function CardsPage() {
   const gameCards = data?.cards.map((card) => (
     <GameCard
       key={card.playerCardId}
-      imageUrl={primitiveWarrior}
+      imageUrl={card.imageUrl}
       level={card.level}
       rarity={card.rarity}
       elixir={card.elixirCost}

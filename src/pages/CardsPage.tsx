@@ -1,5 +1,4 @@
 import { Elixir, GameCard } from "@components/shared";
-import primitiveWarrior from "@assets/prehistoric-warrior.jpg";
 import { Button, CircularProgress } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth, useDeck } from "@hooks";

@@ -2,16 +2,19 @@ import type { CardRarity, RarityClassMap } from "@lib";
 
 export const rarityClasses: Record<CardRarity, RarityClassMap> = {
   Common: {
-    border: "border-blue-500",
-    shadow: "hover:shadow-blue-500/50",
+    border: "border-rarity-Common",
+    shadow: "hover:shadow-rarity-Common/50",
   },
   Rare: {
-    border: "border-orange-500",
-    shadow: "hover:shadow-orange-500/50",
+    border: "border-rarity-Rare",
+    shadow: "hover:shadow-rarity-Rare/50",
   },
-  Epic: { border: "border-purple-500", shadow: "hover:shadow-purple-500/50" },
+  Epic: {
+    border: "border-rarity-Epic",
+    shadow: "hover:shadow-rarity-Epic/50",
+  },
   Legendary: {
-    border: "border-amber-400",
-    shadow: "hover:shadow-amber-500/50",
+    border: "border-rarity-Legendary",
+    shadow: "hover:shadow-rarity-Legendary/50",
   },
 };

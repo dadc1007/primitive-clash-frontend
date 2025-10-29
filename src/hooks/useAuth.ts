@@ -32,7 +32,7 @@ export const useAuth = () => {
     try {
       const userData = await loginMutation.mutateAsync(credentials);
       setUser(userData);
-      navigate("/collection");
+      navigate("/lobby");
       return userData;
     } catch (error) {
       throw error;
@@ -43,6 +43,7 @@ export const useAuth = () => {
     try {
       const userData = await signupMutation.mutateAsync(credentials);
       setUser(userData);
+      navigate("/lobby");
       return userData;
     } catch (error) {
       throw error;

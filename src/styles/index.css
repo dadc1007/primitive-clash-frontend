@@ -8,6 +8,7 @@
   color-scheme: light dark;
 
   --background: oklch(0.97 0.01 60);
+  --background-secondary: oklch(0.9 0.01 60);
   --foreground: oklch(0.25 0.02 40);
   --card: oklch(0.98 0.01 50);
   --card-foreground: oklch(0.25 0.02 40);
@@ -23,7 +24,7 @@
   --accent-foreground: oklch(0.98 0.01 50);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 50);
-  --border: oklch(0.85 0.02 50);
+  --border: oklch(0.3 0.02 40);
   --input: oklch(0.85 0.02 50);
   --ring: oklch(0.45 0.15 35);
   --chart-1: oklch(0.45 0.15 35);
@@ -40,36 +41,45 @@
   --sidebar-accent-foreground: oklch(0.25 0.02 40);
   --sidebar-border: oklch(0.85 0.02 50);
   --sidebar-ring: oklch(0.45 0.15 35);
+  --color-trophies: oklch(0.7 0.1 80);
+  --color-gems: oklch(0.6 0.15 310);
+  --color-rarity-Common: oklch(62.3% 0.214 259.815);
+  --color-rarity-Rare: oklch(70.5% 0.213 47.604);
+  --color-rarity-Epic: oklch(62.7% 0.265 303.9);
+  --color-rarity-Legendary: oklch(76.9% 0.188 70.08);
 }
 
 .dark {
   --background: oklch(0.2 0.02 40);
+  --background-secondary: oklch(0.25 0.02 40);
   --foreground: oklch(0.95 0.01 50);
   --card: oklch(0.22 0.02 40);
   --card-foreground: oklch(0.95 0.01 50);
   --popover: oklch(0.22 0.02 40);
   --popover-foreground: oklch(0.95 0.01 50);
   --primary: oklch(0.6 0.18 50);
-  --primary-foreground: oklch(0.2 0.02 40);
+  --primary-foreground: oklch(0.95 0.01 50);
   --secondary: oklch(0.35 0.08 80);
   --secondary-foreground: oklch(0.95 0.01 50);
   --muted: oklch(0.3 0.02 40);
   --muted-foreground: oklch(0.65 0.02 50);
-  --accent: oklch(0.6 0.18 50);
-  --accent-foreground: oklch(0.2 0.02 40);
+  --accent: oklch(0.45 0.18 50);
+  --accent-foreground: oklch(0.95 0.01 50);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.95 0.01 50);
-  --border: oklch(0.3 0.02 40);
+  --border: oklch(0.85 0.02 50);
   --input: oklch(0.3 0.02 40);
-  --ring: oklch(0.6 0.18 50);
+  --ring: oklch(0.25 0.18 50);
   --sidebar: oklch(0.2 0.02 40);
   --sidebar-foreground: oklch(0.95 0.01 50);
-  --sidebar-primary: oklch(0.6 0.18 50);
-  --sidebar-primary-foreground: oklch(0.2 0.02 40);
+  --sidebar-primary: oklch(0.25 0.18 50);
+  --sidebar-primary-foreground: oklch(0.95 0.01 50);
   --sidebar-accent: oklch(0.3 0.02 40);
   --sidebar-accent-foreground: oklch(0.95 0.01 50);
   --sidebar-border: oklch(0.3 0.02 40);
-  --sidebar-ring: oklch(0.6 0.18 50);
+  --sidebar-ring: oklch(0.25 0.18 50);
+  --color-trophies: oklch(0.85 0.12 90);
+  --color-gems: oklch(0.65 0.2 300);
 }
 
 @theme inline {
@@ -77,6 +87,7 @@
   --font-mono: "Courier New", Courier, monospace;
   --font-bebas: "Bebas Neue", sans-serif;
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -112,6 +123,12 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-trophies: var(--color-trophies);
+  --color-gems: var(--color-gems);
+  --color-rarity-Common: var(--color-rarity-Common);
+  --color-rarity-Rare: var(--color-rarity-Rare);
+  --color-rarity-Epic: var(--color-rarity-Epic);
+  --color-rarity-Legendary: var(--color-rarity-Legendary);
 }
 
 body {

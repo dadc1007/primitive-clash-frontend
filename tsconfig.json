@@ -20,9 +20,11 @@
       "@styles/*": ["src/styles/*"],
       "@lib/*": ["src/types/*"],
       "@lib": ["src/types/index.ts"],
+      "@unity": ["src/unity"],
       "@utils/*": ["src/utils/*"],
       "@utils": ["src/utils/index.ts"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@public/*": ["public/*"]
     }
   }
 }

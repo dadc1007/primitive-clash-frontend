@@ -1,5 +1,5 @@
 import { MainLayout, RootLayout } from "@layouts";
-import { CardsPage, HomePage, LobbyPage } from "@pages";
+import { CardsPage, GamePage, HomePage, LobbyPage } from "@pages";
 import { LoginPage } from "@pages/Auth/Login";
 import { SignupPage } from "@pages/Auth/Signup";
 import { createBrowserRouter, type RouteObject } from "react-router-dom";
@@ -18,6 +18,7 @@ export const routes: RouteObject[] = [
           { path: "/collection", element: <CardsPage /> },
         ],
       },
+      { path: "/game", element: <GamePage /> },
     ],
   },
 ];

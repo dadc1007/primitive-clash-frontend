@@ -17,8 +17,10 @@ export default defineConfig({
       "@providers": path.resolve(__dirname, "./src/providers"),
       "@styles": path.resolve(__dirname, "./src/styles"),
       "@lib": path.resolve(__dirname, "./src/types"),
+      "@unity": path.resolve(__dirname, "./src/unity"),
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@": path.resolve(__dirname, "./src"),
+      "@public": path.resolve(__dirname, "./public"),
     },
   },
 });

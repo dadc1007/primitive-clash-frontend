@@ -3,3 +3,4 @@ export type { UseAuthReturn } from "./useAuth";
 export { useLogin } from "./useLogin";
 export { useSignup } from "./useSignup";
 export { useDeck } from "./useDeck";
+export { useMatchmaking } from "./useMatchmaking";

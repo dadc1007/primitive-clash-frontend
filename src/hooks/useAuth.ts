@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import type {
-  ApiError,
-  AuthSuccessResponse,
-  LoginRequest,
-  SignUpRequest,
-} from "@lib";
-import { useLogin, useSignup } from "@hooks";
+import type { ApiError, AuthSuccessResponse } from "@lib";
+import { useMsal } from "@azure/msal-react";
+import { log } from "@utils";
+import { useUpsertUser } from "./useUpsertUser";
 
 export interface UseAuthReturn {
   user: AuthSuccessResponse | null;
-  login: (credentials: LoginRequest) => Promise<AuthSuccessResponse>;
-  signup: (credentials: SignUpRequest) => Promise<AuthSuccessResponse>;
+  login: () => Promise<void>;
   logout: () => void;
   isLoading: boolean;
   error: ApiError | null;
@@ -19,51 +15,67 @@ export interface UseAuthReturn {
 }
 
 export const useAuth = () => {
+  const { instance } = useMsal();
   const navigate = useNavigate();
   const [user, setUser] = useState<AuthSuccessResponse | null>(() => {
     const savedUser = localStorage.getItem("user_data");
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  const loginMutation = useLogin();
-  const signupMutation = useSignup();
+  const upsertUserMutation = useUpsertUser();
 
-  const login = async (credentials: LoginRequest) => {
+  const login = async () => {
     try {
-      const userData = await loginMutation.mutateAsync(credentials);
+      const loginResponse = await instance.loginPopup({
+        scopes: [
+          "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
+        ],
+      });
+      log("Usuario logueado:", loginResponse.account);
+
+      const tokenResponse = await instance.acquireTokenSilent({
+        scopes: [
+          "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
+        ],
+        account: loginResponse.account,
+      });
+
+      const accessToken = tokenResponse.accessToken;
+      localStorage.setItem("msalAccessToken", accessToken);
+
+      const userData = await upsertUserMutation.mutateAsync();
       setUser(userData);
+
       navigate("/lobby");
-      return userData;
     } catch (error) {
       throw error;
     }
   };
 
-  const signup = async (credentials: SignUpRequest) => {
+  // Función de logout
+  const logout = async () => {
     try {
-      const userData = await signupMutation.mutateAsync(credentials);
-      setUser(userData);
-      navigate("/lobby");
-      return userData;
-    } catch (error) {
-      throw error;
-    }
-  };
+      await instance.logoutPopup();
 
-  const logout = () => {
-    localStorage.removeItem("auth_token");
-    localStorage.removeItem("user_data");
-    setUser(null);
-    navigate("/login");
+      localStorage.removeItem("user_data");
+      localStorage.removeItem("msalAccessToken");
+      setUser(null);
+
+      navigate("/");
+    } catch (error) {
+      localStorage.removeItem("user_data");
+      localStorage.removeItem("msalAccessToken");
+      setUser(null);
+      console.error("Error en logout:", error);
+    }
   };
 
   return {
     user,
     login,
-    signup,
     logout,
-    isLoading: loginMutation.isPending || signupMutation.isPending,
-    error: loginMutation.error || signupMutation.error,
+    isLoading: upsertUserMutation.isPending,
+    error: upsertUserMutation.error,
     isAuthenticated: !!user,
   };
 };

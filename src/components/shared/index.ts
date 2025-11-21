@@ -5,3 +5,4 @@ export { default as Elixir } from "./Elixir";
 export { default as Header } from "./Header";
 export { default as LobbyCard } from "./LobbyCard";
 export { default as BattleMatch } from "./BattleMatch";
+export { default as ProtectedRoute } from "./ProtectedRoute";

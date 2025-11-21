@@ -12,7 +12,7 @@ interface UseMatchmakingReturn {
   status: string;
   isSearching: boolean;
   matchData: MatchFoundData | null;
-  startSearch: (playerId: string) => Promise<void>;
+  startSearch: () => Promise<void>;
   disconnect: () => Promise<void>;
   error: string | null;
 }
@@ -51,28 +51,36 @@ export const useMatchmaking = (hubUrl: string): UseMatchmakingReturn => {
   }, [hubUrl]);
 
   /** Iniciar búsqueda de partida */
-  const startSearch = useCallback(
-    async (playerId: string) => {
-      try {
-        setIsSearching(true);
-        setStatus("Searching for opponent...");
-        await connect();
-        await clientRef.current?.send("SearchGame", playerId);
-        log(" Enviada solicitud de búsqueda:", playerId);
-      } catch (err) {
-        logError("Error al iniciar matchmaking", err);
-        setError("No se pudo iniciar la búsqueda.");
-        setIsSearching(false);
-      }
-    },
-    [connect]
-  );
+  const startSearch = useCallback(async () => {
+    try {
+      setError(null);
+      setIsSearching(true);
+      setStatus("Searching for opponent...");
+
+      await connect();
+
+      await clientRef.current?.send("SearchGame");
+
+      log("Búsqueda de partida iniciada");
+    } catch (err) {
+      logError("Error al iniciar matchmaking", err);
+      setError("No se pudo iniciar la búsqueda.");
+      setIsSearching(false);
+    }
+  }, [connect]);
 
   /** 🔌 Desconectar manualmente */
   const disconnect = useCallback(async () => {
     try {
+      setIsSearching(false);
+      setStatus("Idle");
+      setMatchData(null);
+      setError(null);
+
       await clientRef.current?.disconnect();
       clientRef.current = null;
+
+      log("Desconectado del matchmaking");
     } catch (err) {
       logError("Error al desconectarse de matchmaking", err);
     }

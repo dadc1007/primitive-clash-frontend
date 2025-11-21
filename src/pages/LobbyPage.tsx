@@ -17,19 +17,23 @@ export default function LobbyPage() {
   useEffect(() => {
     if (matchData) {
       log("Partida encontrada:", matchData);
-      const dataToSend = `${matchData.sessionId}|${matchData.userId}|${`${
+
+      const token = localStorage.getItem("msalAccessToken");
+      const dataToSend = `${matchData.sessionId}|${matchData.userId}|${token}|${
         import.meta.env.VITE_HUB_URL
-      }/game`}`;
+      }/game`;
+
       navigate("/game", { state: { connectionData: dataToSend } });
     }
   }, [matchData, navigate]);
 
   const handleSearch = async () => {
     if (!user) return;
+
     if (isSearching) {
       await disconnect();
     } else {
-      await startSearch(user.userId);
+      await startSearch();
     }
   };
 

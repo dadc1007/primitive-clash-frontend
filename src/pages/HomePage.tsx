@@ -17,10 +17,7 @@ export default function HomePage() {
       </p>
       <div className="flex gap-4">
         <Button color="primary" size="lg" onPress={() => navigate("/login")}>
-          Iniciar Sesión
-        </Button>
-        <Button color="secondary" size="lg" onPress={() => navigate("/signup")}>
-          Crear cuenta
+          Iniciar aventura
         </Button>
       </div>
     </div>

@@ -1,14 +1,3 @@
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-export interface SignUpRequest {
-  username: string;
-  email: string;
-  password: string;
-}
-
 export interface AuthSuccessResponse {
   userId: string;
   username: string;
@@ -17,5 +6,4 @@ export interface AuthSuccessResponse {
   gems: number;
   level: number;
   trophies: number;
-  token?: string;
 }

@@ -18,7 +18,15 @@ const apiClient: AxiosInstance = axios.create({
   timeout: 30000,
 });
 
-apiClient.interceptors.request.use(requestInterceptor, requestErrorInterceptor);
+apiClient.interceptors.request.use(async (config) => {
+  const token = localStorage.getItem("msalAccessToken");
+
+  if (token && config.headers) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  return requestInterceptor(config);
+}, requestErrorInterceptor);
 
 apiClient.interceptors.response.use(
   responseInterceptor,

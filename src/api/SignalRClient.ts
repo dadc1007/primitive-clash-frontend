@@ -23,8 +23,12 @@ class SignalRClient {
         return;
       }
 
+      const token = localStorage.getItem("msalAccessToken");
+
       this.connection = new HubConnectionBuilder()
-        .withUrl(this.url)
+        .withUrl(this.url, {
+          accessTokenFactory: () => token || "",
+        })
         .configureLogging(IS_DEV ? LogLevel.Information : LogLevel.None)
         .withAutomaticReconnect()
         .build();

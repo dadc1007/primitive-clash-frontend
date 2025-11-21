@@ -12,6 +12,11 @@ import {
   faClockRotateLeft,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMicrosoft,
+  faGoogle,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faArrowLeft,
@@ -24,5 +29,8 @@ library.add(
   faStore,
   faUsers,
   faClockRotateLeft,
-  faArrowRightFromBracket
+  faArrowRightFromBracket,
+  faMicrosoft,
+  faGoogle,
+  faGithub
 );

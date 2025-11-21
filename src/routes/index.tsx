@@ -1,7 +1,7 @@
+import { ProtectedRoute } from "@components/shared";
 import { MainLayout, RootLayout } from "@layouts";
 import { CardsPage, GamePage, HomePage, LobbyPage } from "@pages";
 import { LoginPage } from "@pages/Auth/Login";
-import { SignupPage } from "@pages/Auth/Signup";
 import { createBrowserRouter, type RouteObject } from "react-router-dom";
 
 export const routes: RouteObject[] = [
@@ -10,15 +10,21 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/login", element: <LoginPage /> },
-      { path: "/signup", element: <SignupPage /> },
+
+      // Rutas protegidas
       {
-        element: <MainLayout />,
+        element: <ProtectedRoute />,
         children: [
-          { path: "/lobby", element: <LobbyPage /> },
-          { path: "/collection", element: <CardsPage /> },
+          {
+            element: <MainLayout />,
+            children: [
+              { path: "/lobby", element: <LobbyPage /> },
+              { path: "/collection", element: <CardsPage /> },
+            ],
+          },
+          { path: "/game", element: <GamePage /> },
         ],
       },
-      { path: "/game", element: <GamePage /> },
     ],
   },
 ];

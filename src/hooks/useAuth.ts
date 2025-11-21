@@ -7,7 +7,7 @@ import { useUpsertUser } from "./useUpsertUser";
 
 export interface UseAuthReturn {
   user: AuthSuccessResponse | null;
-  login: () => Promise<AuthSuccessResponse>;
+  login: () => Promise<void>;
   logout: () => void;
   isLoading: boolean;
   error: ApiError | null;

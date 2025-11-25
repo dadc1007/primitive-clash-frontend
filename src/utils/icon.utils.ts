@@ -11,6 +11,12 @@ import {
   faUsers,
   faClockRotateLeft,
   faArrowRightFromBracket,
+  faDroplet,
+  faStar,
+  faBullseye,
+  faHandFist,
+  faHeart,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faMicrosoft,
@@ -32,5 +38,11 @@ library.add(
   faArrowRightFromBracket,
   faMicrosoft,
   faGoogle,
-  faGithub
+  faGithub,
+  faDroplet,
+  faStar,
+  faBullseye,
+  faHandFist,
+  faHeart,
+  faEye
 );

@@ -21,6 +21,7 @@ export default function CardsPage() {
   const gameCards = data?.cards.map((card) => (
     <GameCard
       key={card.playerCardId}
+      cardId={card.cardId}
       imageUrl={card.imageUrl}
       level={card.level}
       rarity={card.rarity}

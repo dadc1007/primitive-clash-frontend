@@ -2,8 +2,7 @@ import { Card, CardFooter, Image, useDisclosure } from "@heroui/react";
 import type { CardRarity } from "@lib";
 import { rarityClasses } from "@utils/rarityMapping.utils";
 import { useCard } from "@hooks";
-import Elixir from "./Elixir";
-import CardDetailsModal from "./CardDetailsModal";
+import { CardDetailsModal, Elixir } from "@components/shared/card";
 
 interface GameCardProps {
   cardId: string;

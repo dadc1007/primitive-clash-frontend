@@ -7,9 +7,12 @@ declare global {
     unityInstance?: {
       SendMessage: (gameObject: string, method: string, value?: any) => void;
     };
+    onReturnToLobby?: () => void;
   }
 
   interface HTMLCanvasElement {
     getContextSafariWebGL2Fixed?: (type: string, attrs?: any) => any;
   }
 }
+
+export {};

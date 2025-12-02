@@ -11,6 +11,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { upsertUser } from "../auth.mutations";
 import apiClient from "@api/apiClient";
 import type { AuthSuccessResponse } from "@lib";
+import type { InternalAxiosRequestConfig } from "axios";
 
 vi.mock("@api/apiClient");
 
@@ -36,7 +37,7 @@ describe("auth.mutations", () => {
         status: 200,
         statusText: "OK",
         headers: {},
-        config: {} as any,
+        config: { headers: {} } as InternalAxiosRequestConfig,
       });
 
       const result = await upsertUser();
@@ -61,7 +62,7 @@ describe("auth.mutations", () => {
         status: 201,
         statusText: "Created",
         headers: {},
-        config: {} as any,
+        config: { headers: {} } as InternalAxiosRequestConfig,
       });
 
       const result = await upsertUser();

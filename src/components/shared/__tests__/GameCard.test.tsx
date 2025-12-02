@@ -16,6 +16,7 @@ import GameCard from "../GameCard";
 import * as useCardHook from "@hooks/useCard";
 import type { CardRarity, CardResponse } from "@lib";
 import type { ReactNode } from "react";
+import type { UseQueryResult } from "@tanstack/react-query";
 
 // Mock hooks and components
 vi.mock("@hooks/useCard");
@@ -84,7 +85,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -96,7 +97,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     const { container } = render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -109,7 +110,7 @@ describe("GameCard", () => {
       data: { ...mockCardDetails, rarity: "Legendary" },
       isLoading: false,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     const { container } = render(
       <GameCard {...defaultProps} rarity="Legendary" />,
@@ -125,7 +126,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -138,7 +139,7 @@ describe("GameCard", () => {
       data: undefined,
       isLoading: true,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     const { container } = render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -151,7 +152,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as any);
+    } as UseQueryResult<CardResponse, Error>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 

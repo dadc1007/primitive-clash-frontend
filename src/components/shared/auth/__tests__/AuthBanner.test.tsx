@@ -41,18 +41,18 @@ describe("AuthBanner", () => {
   });
 
   it("should apply login styles", () => {
-    const { container } = render(<AuthBanner {...defaultProps} />);
+    render(<AuthBanner {...defaultProps} />);
 
-    const bannerDiv = container.querySelector(".bg-primary");
+    const bannerDiv = document.querySelector(".bg-primary");
     expect(bannerDiv).toBeInTheDocument();
   });
 
   it("should apply signup styles", () => {
-    const { container } = render(
+    render(
       <AuthBanner {...defaultProps} type="signup" />
     );
 
-    const bannerDiv = container.querySelector(".bg-secondary");
+    const bannerDiv = document.querySelector(".bg-secondary");
     expect(bannerDiv).toBeInTheDocument();
   });
 

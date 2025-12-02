@@ -12,6 +12,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getCardDetailsById } from "../card.queries";
 import apiClient from "@api/apiClient";
 import type { CardResponse } from "@lib";
+import type { InternalAxiosRequestConfig } from "axios";
 
 vi.mock("@api/apiClient");
 
@@ -45,7 +46,7 @@ describe("card.queries", () => {
         status: 200,
         statusText: "OK",
         headers: {},
-        config: {} as any,
+        config: { headers: {} } as InternalAxiosRequestConfig,
       });
 
       const result = await getCardDetailsById("card-123");
@@ -75,7 +76,7 @@ describe("card.queries", () => {
         status: 200,
         statusText: "OK",
         headers: {},
-        config: {} as any,
+        config: { headers: {} } as InternalAxiosRequestConfig,
       });
 
       const result = await getCardDetailsById("card-456");
@@ -109,7 +110,7 @@ describe("card.queries", () => {
         status: 200,
         statusText: "OK",
         headers: {},
-        config: {} as any,
+        config: { headers: {} } as InternalAxiosRequestConfig,
       });
 
       const result = await getCardDetailsById("card-789");

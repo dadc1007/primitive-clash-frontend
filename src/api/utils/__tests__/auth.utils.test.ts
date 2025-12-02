@@ -21,10 +21,11 @@ describe("auth.utils", () => {
 
   beforeEach(() => {
     // Limpiar localStorage
-    globalThis.localStorage.clear();
+    localStorage.clear();
     
     // Mock window.location
     originalLocation = globalThis.location;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     delete (globalThis as any).location;
     globalThis.location = {
       ...originalLocation,

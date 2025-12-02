@@ -21,11 +21,11 @@ describe("apiClient interceptors integration", () => {
     
     // Mock de axios para interceptar la request
     const mockGet = vi.spyOn(apiClient, 'get');
-    mockGet.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: {} as any });
+    mockGet.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
 
     try {
       await apiClient.get('/test');
-    } catch (e) {
+    } catch {
       // Ignoramos errores de la llamada
     }
 
@@ -38,11 +38,11 @@ describe("apiClient interceptors integration", () => {
     localStorage.setItem("auth_token", "regular-token");
     
     const mockPost = vi.spyOn(apiClient, 'post');
-    mockPost.mockResolvedValue({ data: {}, status: 201, statusText: 'Created', headers: {}, config: {} as any });
+    mockPost.mockResolvedValue({ data: {}, status: 201, statusText: 'Created', headers: {}, config: { headers: {} } });
 
     try {
       await apiClient.post('/test', { data: 'test' });
-    } catch (e) {
+    } catch {
       // Ignoramos errores
     }
 
@@ -54,11 +54,11 @@ describe("apiClient interceptors integration", () => {
     localStorage.setItem("auth_token", "bearer-token");
     
     const mockPut = vi.spyOn(apiClient, 'put');
-    mockPut.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: {} as any });
+    mockPut.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
 
     try {
       await apiClient.put('/test', { data: 'update' });
-    } catch (e) {
+    } catch {
       // Ignoramos errores
     }
 
@@ -68,11 +68,11 @@ describe("apiClient interceptors integration", () => {
 
   it("should handle delete requests", async () => {
     const mockDelete = vi.spyOn(apiClient, 'delete');
-    mockDelete.mockResolvedValue({ data: {}, status: 204, statusText: 'No Content', headers: {}, config: {} as any });
+    mockDelete.mockResolvedValue({ data: {}, status: 204, statusText: 'No Content', headers: {}, config: { headers: {} } });
 
     try {
       await apiClient.delete('/test/123');
-    } catch (e) {
+    } catch {
       // Ignoramos errores
     }
 
@@ -82,11 +82,11 @@ describe("apiClient interceptors integration", () => {
 
   it("should handle patch requests", async () => {
     const mockPatch = vi.spyOn(apiClient, 'patch');
-    mockPatch.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: {} as any });
+    mockPatch.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
 
     try {
       await apiClient.patch('/test/123', { field: 'value' });
-    } catch (e) {
+    } catch {
       // Ignoramos errores
     }
 

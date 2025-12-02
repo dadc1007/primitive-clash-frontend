@@ -84,7 +84,7 @@ describe("request.interceptor", () => {
   describe("requestErrorInterceptor", () => {
     it("should reject with the error", async () => {
       const mockError: AxiosError = {
-        config: { headers: {} as any },
+        config: { headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -98,7 +98,7 @@ describe("request.interceptor", () => {
 
     it("should handle network errors", async () => {
       const networkError: AxiosError = {
-        config: { headers: {} as any },
+        config: { headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",

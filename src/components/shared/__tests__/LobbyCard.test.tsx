@@ -12,6 +12,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LobbyCard from "../LobbyCard";
 import { BrowserRouter } from "react-router-dom";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 // Mock de useNavigate
 const mockNavigate = vi.fn();
@@ -39,7 +40,7 @@ describe("LobbyCard", () => {
   const defaultProps = {
     to: "/cards",
     title: "My Cards",
-    icon: ["fas", "cards"] as any,
+    icon: ["fas", "cards"] as IconProp,
     gradientClasses: "from-blue-500 to-purple-600",
   };
 
@@ -83,7 +84,7 @@ describe("LobbyCard", () => {
         <LobbyCard
           to="/battle"
           title="Battle"
-          icon={["fas", "swords"] as any}
+          icon={["fas", "swords"] as IconProp}
           gradientClasses="from-red-500 to-orange-600"
         />
       </BrowserRouter>

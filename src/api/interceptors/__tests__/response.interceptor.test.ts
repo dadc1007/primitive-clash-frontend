@@ -14,7 +14,7 @@ import {
   responseInterceptor,
   responseErrorInterceptor,
 } from "../response.interceptor";
-import type { AxiosError, AxiosResponse } from "axios";
+import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import type { ErrorResponse } from "@lib";
 import { ApiError } from "@lib";
 
@@ -41,7 +41,7 @@ describe("response.interceptor", () => {
         status: 200,
         statusText: "OK",
         headers: {},
-        config: { url: "/api/test", headers: {} as any },
+        config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
       };
 
       const result = responseInterceptor(mockResponse);
@@ -55,7 +55,7 @@ describe("response.interceptor", () => {
         status: 201,
         statusText: "Created",
         headers: {},
-        config: { url: "/api/users", headers: {} as any },
+        config: { url: "/api/users", headers: {} } as InternalAxiosRequestConfig,
       };
 
       const result = responseInterceptor(mockResponse);
@@ -69,7 +69,7 @@ describe("response.interceptor", () => {
       const { handleUnauthorized } = await import("@api/utils");
 
       const mockError: AxiosError<ErrorResponse> = {
-        config: { url: "/api/protected", headers: {} as any },
+        config: { url: "/api/protected", headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -79,7 +79,7 @@ describe("response.interceptor", () => {
           statusText: "Unauthorized",
           data: { message: "Token expired" },
           headers: {},
-          config: { url: "/api/protected", headers: {} as any },
+          config: { url: "/api/protected", headers: {} } as InternalAxiosRequestConfig,
         },
       };
 
@@ -91,7 +91,7 @@ describe("response.interceptor", () => {
 
     it("should throw ApiError with response data", async () => {
       const mockError: AxiosError<ErrorResponse> = {
-        config: { url: "/api/test", headers: {} as any },
+        config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -101,7 +101,7 @@ describe("response.interceptor", () => {
           statusText: "Bad Request",
           data: { message: "Invalid input" },
           headers: {},
-          config: { url: "/api/test", headers: {} as any },
+          config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         },
       };
 
@@ -116,7 +116,7 @@ describe("response.interceptor", () => {
 
     it("should handle network errors without response", async () => {
       const mockError: AxiosError<ErrorResponse> = {
-        config: { url: "/api/test", headers: {} as any },
+        config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -157,7 +157,7 @@ describe("response.interceptor", () => {
 
     it("should handle error with code and details", async () => {
       const mockError: AxiosError<ErrorResponse> = {
-        config: { url: "/api/test", headers: {} as any },
+        config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -168,10 +168,10 @@ describe("response.interceptor", () => {
           data: {
             message: "Validation failed",
             code: "VALIDATION_ERROR",
-            details: { field: "email", issue: "invalid format" },
-          } as any,
+            details: { field: "email", issue: "invalid format" } as Record<string, unknown>,
+          } as ErrorResponse,
           headers: {},
-          config: { url: "/api/test", headers: {} as any },
+          config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         },
       };
 
@@ -190,7 +190,7 @@ describe("response.interceptor", () => {
 
     it("should use error property from response data when message is not available", async () => {
       const mockError: AxiosError<ErrorResponse> = {
-        config: { url: "/api/test", headers: {} as any },
+        config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         isAxiosError: true,
         toJSON: () => ({}),
         name: "AxiosError",
@@ -200,9 +200,9 @@ describe("response.interceptor", () => {
           statusText: "Internal Server Error",
           data: {
             error: "Database connection failed",
-          } as any,
+          } as ErrorResponse,
           headers: {},
-          config: { url: "/api/test", headers: {} as any },
+          config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,
         },
       };
 

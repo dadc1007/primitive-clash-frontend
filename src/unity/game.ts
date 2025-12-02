@@ -11,7 +11,7 @@ let client: SignalRClient | null = null;
 /**
  * Unity llama a esta función desde GameClient.cs → StartSignalR(hubUrl)
  */
-(window as unknown as Window & { StartSignalR: (hubUrl: string) => Promise<void> }).StartSignalR = async (hubUrl: string) => {
+(globalThis as unknown as Window & { StartSignalR: (hubUrl: string) => Promise<void> }).StartSignalR = async (hubUrl: string) => {
   try {
     log("🎮 Iniciando conexión SignalR desde Unity con hub:", hubUrl);
     client = new SignalRClient(hubUrl);
@@ -38,7 +38,7 @@ let client: SignalRClient | null = null;
 /**
  * Unity llama esto desde C# → InvokeServer(methodName, argsJson)
  */
-(window as unknown as Window & { InvokeServer: (methodName: string, argsJson: string) => Promise<void> }).InvokeServer = async (methodName: string, argsJson: string) => {
+(globalThis as unknown as Window & { InvokeServer: (methodName: string, argsJson: string) => Promise<void> }).InvokeServer = async (methodName: string, argsJson: string) => {
   try {
     if (!client) {
       throw new Error("SignalRClient no inicializado");
@@ -54,7 +54,7 @@ let client: SignalRClient | null = null;
 /**
  * Guardamos la referencia a Unity para poder enviarle eventos
  */
-(window as unknown as Window & { setUnityInstance: (instance: UnityInstance) => void }).setUnityInstance = (instance: UnityInstance) => {
+(globalThis as unknown as Window & { setUnityInstance: (instance: UnityInstance) => void }).setUnityInstance = (instance: UnityInstance) => {
   unityInstance = instance;
   log("UnityInstance asignado correctamente");
 };

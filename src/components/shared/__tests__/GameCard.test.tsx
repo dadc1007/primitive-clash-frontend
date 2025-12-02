@@ -14,7 +14,7 @@ import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import GameCard from "../GameCard";
 import * as useCardHook from "@hooks/useCard";
-import type { CardRarity, CardResponse } from "@lib";
+import type { CardRarity, CardResponse, ApiError } from "@lib";
 import type { ReactNode } from "react";
 import type { UseQueryResult } from "@tanstack/react-query";
 
@@ -85,7 +85,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -97,7 +97,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     const { container } = render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -110,7 +110,7 @@ describe("GameCard", () => {
       data: { ...mockCardDetails, rarity: "Legendary" },
       isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     const { container } = render(
       <GameCard {...defaultProps} rarity="Legendary" />,
@@ -126,7 +126,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -137,9 +137,9 @@ describe("GameCard", () => {
   it("should not render modal when card details are not loaded", () => {
     vi.mocked(useCardHook.useCard).mockReturnValue({
       data: undefined,
-      isLoading: true,
+      isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     const { container } = render(<GameCard {...defaultProps} />, { wrapper });
 
@@ -152,7 +152,7 @@ describe("GameCard", () => {
       data: mockCardDetails,
       isLoading: false,
       isError: false,
-    } as UseQueryResult<CardResponse, Error>);
+    } as UseQueryResult<CardResponse, ApiError>);
 
     render(<GameCard {...defaultProps} />, { wrapper });
 

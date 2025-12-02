@@ -21,7 +21,7 @@ export const responseErrorInterceptor = async (
 
     handleErrorByStatus(status, data, error.config?.url);
 
-    const errorData = data as Record<string, unknown>;
+    const errorData = data as unknown as Record<string, unknown>;
     const specificErrorMessage =
       data?.message || errorData?.error || "Error en la petición";
 

@@ -2,7 +2,8 @@ declare global {
   interface ErrorConstructor {
     captureStackTrace?(
       error: object,
-      constructorOpt?: (...args: unknown[]) => void
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+      constructorOpt?: Function
     ): void;
   }
 

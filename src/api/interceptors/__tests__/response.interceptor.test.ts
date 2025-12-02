@@ -200,6 +200,7 @@ describe("response.interceptor", () => {
           statusText: "Internal Server Error",
           data: {
             error: "Database connection failed",
+            message: "Database connection failed",
           } as ErrorResponse,
           headers: {},
           config: { url: "/api/test", headers: {} } as InternalAxiosRequestConfig,

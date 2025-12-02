@@ -25,31 +25,27 @@ export const useAuth = () => {
   const upsertUserMutation = useUpsertUser();
 
   const login = async () => {
-    try {
-      const loginResponse = await instance.loginPopup({
-        scopes: [
-          "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
-        ],
-      });
-      log("Usuario logueado:", loginResponse.account);
+    const loginResponse = await instance.loginPopup({
+      scopes: [
+        "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
+      ],
+    });
+    log("Usuario logueado:", loginResponse.account);
 
-      const tokenResponse = await instance.acquireTokenSilent({
-        scopes: [
-          "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
-        ],
-        account: loginResponse.account,
-      });
+    const tokenResponse = await instance.acquireTokenSilent({
+      scopes: [
+        "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
+      ],
+      account: loginResponse.account,
+    });
 
-      const accessToken = tokenResponse.accessToken;
-      localStorage.setItem("msalAccessToken", accessToken);
+    const accessToken = tokenResponse.accessToken;
+    localStorage.setItem("msalAccessToken", accessToken);
 
-      const userData = await upsertUserMutation.mutateAsync();
-      setUser(userData);
+    const userData = await upsertUserMutation.mutateAsync();
+    setUser(userData);
 
-      navigate("/lobby");
-    } catch (error) {
-      throw error;
-    }
+    navigate("/lobby");
   };
 
   // Función de logout

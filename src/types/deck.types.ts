@@ -9,7 +9,7 @@ export interface DeckResponse {
 
 export interface CardInDeckResponse {
   playerCardId: string;
-  cardName: string;
+  cardId: string;
   rarity: CardRarity;
   elixirCost: number;
   level: number;

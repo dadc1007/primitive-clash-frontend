@@ -25,8 +25,7 @@ describe("auth.utils", () => {
     
     // Mock window.location
     originalLocation = globalThis.location;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    delete (globalThis as any).location;
+    delete (globalThis as { location?: unknown }).location;
     globalThis.location = {
       ...originalLocation,
       href: "",

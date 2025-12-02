@@ -28,12 +28,10 @@ globalThis.IntersectionObserver = class IntersectionObserver {
   readonly rootMargin: string = "";
   readonly thresholds: ReadonlyArray<number> = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   observe(_target: Element): void {
     // Mock implementation
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   unobserve(_target: Element): void {
     // Mock implementation
   }
@@ -45,5 +43,4 @@ globalThis.IntersectionObserver = class IntersectionObserver {
   takeRecords(): IntersectionObserverEntry[] {
     return [];
   }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-} as any;
+};

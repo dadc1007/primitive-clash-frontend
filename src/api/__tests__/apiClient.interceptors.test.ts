@@ -21,7 +21,7 @@ describe("apiClient interceptors integration", () => {
     
     // Mock de axios para interceptar la request
     const mockGet = vi.spyOn(apiClient, 'get');
-    mockGet.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
+    mockGet.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } as unknown });
 
     try {
       await apiClient.get('/test');
@@ -38,7 +38,7 @@ describe("apiClient interceptors integration", () => {
     localStorage.setItem("auth_token", "regular-token");
     
     const mockPost = vi.spyOn(apiClient, 'post');
-    mockPost.mockResolvedValue({ data: {}, status: 201, statusText: 'Created', headers: {}, config: { headers: {} } });
+    mockPost.mockResolvedValue({ data: {}, status: 201, statusText: 'Created', headers: {}, config: { headers: {} } as unknown });
 
     try {
       await apiClient.post('/test', { data: 'test' });
@@ -54,7 +54,7 @@ describe("apiClient interceptors integration", () => {
     localStorage.setItem("auth_token", "bearer-token");
     
     const mockPut = vi.spyOn(apiClient, 'put');
-    mockPut.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
+    mockPut.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } as unknown });
 
     try {
       await apiClient.put('/test', { data: 'update' });
@@ -68,7 +68,7 @@ describe("apiClient interceptors integration", () => {
 
   it("should handle delete requests", async () => {
     const mockDelete = vi.spyOn(apiClient, 'delete');
-    mockDelete.mockResolvedValue({ data: {}, status: 204, statusText: 'No Content', headers: {}, config: { headers: {} } });
+    mockDelete.mockResolvedValue({ data: {}, status: 204, statusText: 'No Content', headers: {}, config: { headers: {} } as unknown });
 
     try {
       await apiClient.delete('/test/123');
@@ -82,7 +82,7 @@ describe("apiClient interceptors integration", () => {
 
   it("should handle patch requests", async () => {
     const mockPatch = vi.spyOn(apiClient, 'patch');
-    mockPatch.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } });
+    mockPatch.mockResolvedValue({ data: {}, status: 200, statusText: 'OK', headers: {}, config: { headers: {} } as unknown });
 
     try {
       await apiClient.patch('/test/123', { field: 'value' });

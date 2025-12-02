@@ -19,6 +19,7 @@ describe("error.utils", () => {
 
       handleErrorByStatus(401, undefined);
 
+      expect(consoleErrorSpy).toHaveBeenCalled();
       consoleErrorSpy.mockRestore();
     });
 
@@ -30,6 +31,10 @@ describe("error.utils", () => {
 
       handleErrorByStatus(403, errorData);
 
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        expect.stringMatching(/Acceso denegado/),
+        "Access denied to this resource"
+      );
       consoleErrorSpy.mockRestore();
     });
 
@@ -38,6 +43,10 @@ describe("error.utils", () => {
 
       handleErrorByStatus(404, undefined, "/api/users/123");
 
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        expect.stringMatching(/Recurso no encontrado/),
+        "/api/users/123"
+      );
       consoleErrorSpy.mockRestore();
     });
 
@@ -50,6 +59,7 @@ describe("error.utils", () => {
 
       handleErrorByStatus(422, errorData);
 
+      expect(consoleErrorSpy).toHaveBeenCalled();
       consoleErrorSpy.mockRestore();
     });
 
@@ -58,6 +68,7 @@ describe("error.utils", () => {
 
       handleErrorByStatus(500, undefined);
 
+      expect(consoleErrorSpy).toHaveBeenCalled();
       consoleErrorSpy.mockRestore();
     });
 
@@ -69,6 +80,11 @@ describe("error.utils", () => {
 
       handleErrorByStatus(418, errorData);
 
+      expect(consoleErrorSpy).toHaveBeenCalledWith(
+        expect.stringMatching(/Error inesperado/),
+        418,
+        "Unknown error occurred"
+      );
       consoleErrorSpy.mockRestore();
     });
 
@@ -77,6 +93,7 @@ describe("error.utils", () => {
 
       handleErrorByStatus(500, undefined);
 
+      expect(consoleErrorSpy).toHaveBeenCalled();
       consoleErrorSpy.mockRestore();
     });
   });

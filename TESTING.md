@@ -2,7 +2,7 @@
 
 Este proyecto utiliza **Vitest** y **React Testing Library** para pruebas unitarias.
 
-## 📦 Dependencias Instaladas
+## Dependencias Instaladas
 
 - `vitest` - Framework de testing rápido compatible con Vite
 - `@testing-library/react` - Utilidades para testing de componentes React
@@ -12,7 +12,7 @@ Este proyecto utiliza **Vitest** y **React Testing Library** para pruebas unitar
 - `@vitest/ui` - Interfaz visual para tests
 - `@vitest/coverage-v8` - Reportes de cobertura de código
 
-## 🚀 Comandos Disponibles
+## Comandos Disponibles
 
 ```bash
 # Ejecutar tests en modo watch (recomendado para desarrollo)
@@ -28,7 +28,7 @@ npm run test:ui
 npm run test:coverage
 ```
 
-## 📁 Estructura de Tests
+## Estructura de Tests
 
 Los tests siguen el estándar de scaffolding recomendado:
 
@@ -61,47 +61,47 @@ src/
     └── setup.ts          # Configuración global de tests
 ```
 
-## ✅ Tests Implementados
+## Tests Implementados
 
 ### Utilidades (Utils)
-- ✅ `translations.utils.test.ts` - 13 tests
+- `translations.utils.test.ts` - 13 tests
   - Traducciones de rareza (Common, Rare, Epic, Legendary)
   - Traducciones de tipo de carta (Troop, Building, Spell)
   - Traducciones de clase de unidad (Ground, Air, Buildings)
 
-- ✅ `rarityMapping.utils.test.ts` - 6 tests
+- `rarityMapping.utils.test.ts` - 6 tests
   - Clases CSS para cada rareza
   - Validación de propiedades (border, shadow)
 
-- ✅ `log.utils.test.ts` - 6 tests
+- `log.utils.test.ts` - 6 tests
   - Logging condicional según ambiente (DEV/PROD)
   - Manejo de errores
 
 ### Hooks
-- ✅ `useCard.test.tsx` - 4 tests
+- `useCard.test.tsx` - 4 tests
   - Fetch exitoso de detalles de carta
   - Manejo de cardId vacío
   - Manejo de errores
 
-- ✅ `useDeck.test.tsx` - 5 tests
+- `useDeck.test.tsx` - 5 tests
   - Fetch exitoso de mazo
   - Manejo de userId vacío
   - Manejo de errores
   - Refetch al cambiar userId
 
 ### Componentes
-- ✅ `GameCard.test.tsx` - 6 tests
+- `GameCard.test.tsx` - 6 tests
   - Renderizado de nivel de carta
   - Aplicación de clases de rareza
   - Renderizado de imagen
   - Llamada correcta a hooks
 
-- ✅ `Elixir.test.tsx` - 5 tests
+- `Elixir.test.tsx` - 5 tests
   - Renderizado de costo de elixir
   - Manejo de valores especiales (0, undefined, valores altos)
   - Validación de estilos CSS
 
-## 📊 Cobertura de Código
+## Cobertura de Código
 
 Después de ejecutar `npm run test:coverage`, encontrarás los reportes en:
 
@@ -115,7 +115,7 @@ Después de ejecutar `npm run test:coverage`, encontrarás los reportes en:
 - **Hooks (testeados)**: 100% cubierto (useCard, useDeck)
 - **Componentes (testeados)**: 100% cubierto (GameCard, Elixir)
 
-## 🔧 Configuración
+## Configuración
 
 ### vite.config.ts
 
@@ -146,7 +146,7 @@ Configuración global que incluye:
 - Cleanup automático después de cada test
 - Mocks de `window.matchMedia` e `IntersectionObserver`
 
-## 🔍 SonarCloud
+## SonarCloud
 
 El proyecto está configurado para SonarCloud con el archivo `sonar-project.properties`.
 
@@ -155,7 +155,7 @@ Para que SonarCloud detecte la cobertura:
 2. SonarCloud leerá automáticamente `coverage/lcov.info`
 3. Los reportes aparecerán en el dashboard de SonarCloud
 
-## 📝 Escribir Nuevos Tests
+## Escribir Nuevos Tests
 
 ### Test de Utilidad
 
@@ -215,17 +215,7 @@ describe("MiComponente", () => {
 });
 ```
 
-## 🎯 Buenas Prácticas
-
-1. ✅ **Nombrar tests descriptivamente**: `should do X when Y`
-2. ✅ **Un concepto por test**: Cada test valida una sola cosa
-3. ✅ **Usar `beforeEach`** para setup común
-4. ✅ **Limpiar mocks** con `vi.clearAllMocks()` o `vi.resetAllMocks()`
-5. ✅ **Tests independientes**: No depender del orden de ejecución
-6. ✅ **Ubicar tests junto al código**: `__tests__` en la misma carpeta
-7. ✅ **Cobertura no es todo**: Prioriza tests significativos
-
-## 📚 Recursos
+## Recursos
 
 - [Vitest Documentation](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/react)

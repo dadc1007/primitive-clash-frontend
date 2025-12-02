@@ -7,8 +7,8 @@ afterEach(() => {
   cleanup();
 });
 
-// Mock window.matchMedia
-Object.defineProperty(window, "matchMedia", {
+// Mock globalThis.matchMedia
+Object.defineProperty(globalThis, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
     matches: false,
@@ -24,11 +24,25 @@ Object.defineProperty(window, "matchMedia", {
 
 // Mock IntersectionObserver
 globalThis.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
-  disconnect() {}
-  observe() {}
-  takeRecords() {
+  readonly root: Element | null = null;
+  readonly rootMargin: string = "";
+  readonly thresholds: ReadonlyArray<number> = [];
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  observe(_target: Element): void {
+    // Mock implementation
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  unobserve(_target: Element): void {
+    // Mock implementation
+  }
+
+  disconnect(): void {
+    // Mock implementation
+  }
+
+  takeRecords(): IntersectionObserverEntry[] {
     return [];
   }
-  unobserve() {}
 } as any;

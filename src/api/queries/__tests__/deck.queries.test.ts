@@ -23,28 +23,19 @@ describe("deck.queries", () => {
   describe("getDeckByUserId", () => {
     it("should call apiClient.get with correct endpoint", async () => {
       const mockDeck: DeckResponse = {
-        id: "deck-123",
-        userId: "user-123",
-        name: "My Deck",
+        deckId: "deck-123",
+        size: 1,
+        averageElixirCost: 3,
         cards: [
           {
-            id: "card-1",
-            name: "Dragon",
-            description: "A dragon",
-            imageUrl: "https://example.com/dragon.jpg",
-            level: 5,
+            playerCardId: "player-card-1",
+            cardId: "card-1",
+            rarity: "Legendary",
             elixirCost: 3,
-            health: 100,
-            damage: 50,
-            attackSpeed: 1.5,
-            rarity: "LEGENDARY",
-            cardType: "TROOP",
-            unitClass: "TANK",
-            targets: ["Ground"],
+            level: 5,
+            imageUrl: "https://example.com/dragon.jpg",
           },
         ],
-        createdAt: "2024-01-01T00:00:00Z",
-        updatedAt: "2024-01-01T00:00:00Z",
       };
 
       vi.mocked(apiClient.get).mockResolvedValue({
@@ -63,43 +54,27 @@ describe("deck.queries", () => {
 
     it("should return deck with cards from response", async () => {
       const mockDeck: DeckResponse = {
-        id: "deck-456",
-        userId: "user-456",
-        name: "Spell Deck",
+        deckId: "deck-456",
+        size: 2,
+        averageElixirCost: 5,
         cards: [
           {
-            id: "card-2",
-            name: "Fireball",
-            description: "A fireball",
-            imageUrl: "https://example.com/fireball.jpg",
-            level: 3,
+            playerCardId: "player-card-2",
+            cardId: "card-2",
+            rarity: "Common",
             elixirCost: 4,
-            health: 0,
-            damage: 80,
-            attackSpeed: 0,
-            rarity: "COMMON",
-            cardType: "SPELL",
-            unitClass: "NONE",
-            targets: ["Ground", "Air"],
+            level: 3,
+            imageUrl: "https://example.com/fireball.jpg",
           },
           {
-            id: "card-3",
-            name: "Lightning",
-            description: "Lightning strike",
-            imageUrl: "https://example.com/lightning.jpg",
-            level: 2,
+            playerCardId: "player-card-3",
+            cardId: "card-3",
+            rarity: "Rare",
             elixirCost: 6,
-            health: 0,
-            damage: 120,
-            attackSpeed: 0,
-            rarity: "RARE",
-            cardType: "SPELL",
-            unitClass: "NONE",
-            targets: ["Ground", "Air"],
+            level: 2,
+            imageUrl: "https://example.com/lightning.jpg",
           },
         ],
-        createdAt: "2024-01-02T00:00:00Z",
-        updatedAt: "2024-01-02T00:00:00Z",
       };
 
       vi.mocked(apiClient.get).mockResolvedValue({
@@ -112,9 +87,9 @@ describe("deck.queries", () => {
 
       const result = await getDeckByUserId("user-456");
 
-      expect(result.name).toBe("Spell Deck");
+      expect(result.deckId).toBe("deck-456");
       expect(result.cards).toHaveLength(2);
-      expect(result.cards[0].name).toBe("Fireball");
+      expect(result.cards[0].cardId).toBe("card-2");
     });
 
     it("should throw error when deck not found", async () => {
@@ -128,12 +103,10 @@ describe("deck.queries", () => {
 
     it("should handle empty deck", async () => {
       const mockDeck: DeckResponse = {
-        id: "deck-789",
-        userId: "user-789",
-        name: "Empty Deck",
+        deckId: "deck-789",
+        size: 0,
+        averageElixirCost: 0,
         cards: [],
-        createdAt: "2024-01-03T00:00:00Z",
-        updatedAt: "2024-01-03T00:00:00Z",
       };
 
       vi.mocked(apiClient.get).mockResolvedValue({
@@ -147,7 +120,7 @@ describe("deck.queries", () => {
       const result = await getDeckByUserId("user-789");
 
       expect(result.cards).toHaveLength(0);
-      expect(result.name).toBe("Empty Deck");
+      expect(result.size).toBe(0);
     });
   });
 });

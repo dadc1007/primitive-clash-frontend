@@ -13,6 +13,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import AuthForm from "../AuthForm";
+import type { ApiError } from "@lib";
 
 const mockLogin = vi.fn();
 
@@ -105,7 +106,8 @@ describe("AuthForm", () => {
   });
 
   it("should display error message when error prop is provided", () => {
-    const error = {
+    const error: ApiError = {
+      name: "ApiError",
       message: "Invalid credentials",
       status: 401,
       code: "UNAUTHORIZED",

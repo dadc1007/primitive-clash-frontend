@@ -8,7 +8,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "./src/test/setup.ts",
+    setupFiles: "./src/tests/setup.ts",
     css: true,
     coverage: {
       provider: "v8",
@@ -16,7 +16,7 @@ export default defineConfig({
       reportsDirectory: "./coverage",
       exclude: [
         "node_modules/",
-        "src/test/",
+        "src/tests/",
         "**/*.d.ts",
         "**/*.config.*",
         "**/mockData",
@@ -25,6 +25,17 @@ export default defineConfig({
         "**/*.test.ts",
         "**/*.spec.tsx",
         "**/*.test.tsx",
+        // Barrel exports: solo re-exportan otros módulos, sin lógica propia
+        "**/index.ts",
+        // SignalR: requiere servidor real y mocks muy complejos, testear con E2E
+        "src/api/SignalRClient.ts",
+        "src/hooks/useMatchmaking.ts",
+        // Azure MSAL: requiere configuración de Azure AD, testear manualmente o con E2E
+        "src/hooks/useAuth.ts",
+        // Assets: archivos no ejecutables (imágenes, iconos, etc)
+        "src/assets/**",
+        // Carpetas de tests
+        "**/__tests__/**",
       ],
     },
   },

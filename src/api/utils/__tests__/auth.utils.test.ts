@@ -17,16 +17,16 @@ import {
 } from "../auth.utils";
 
 describe("auth.utils", () => {
-  let localStorageMock: Storage;
   let originalLocation: Location;
 
   beforeEach(() => {
-    localStorageMock = window.localStorage;
+    // Limpiar localStorage
+    globalThis.localStorage.clear();
     
     // Mock window.location
-    originalLocation = window.location;
-    delete (window as any).location;
-    window.location = {
+    originalLocation = globalThis.location;
+    delete (globalThis as any).location;
+    globalThis.location = {
       ...originalLocation,
       href: "",
       pathname: "/dashboard",
@@ -35,7 +35,7 @@ describe("auth.utils", () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
-    window.location = originalLocation;
+    globalThis.location = originalLocation;
   });
 
   describe("handleUnauthorized", () => {
@@ -51,29 +51,29 @@ describe("auth.utils", () => {
     });
 
     it("should redirect to login when not on login page", () => {
-      window.location.pathname = "/dashboard";
+      globalThis.location.pathname = "/dashboard";
 
       handleUnauthorized();
 
-      expect(window.location.href).toBe("/login");
+      expect(globalThis.location.href).toBe("/login");
     });
 
     it("should not redirect when already on login page", () => {
-      window.location.pathname = "/login";
-      const originalHref = window.location.href;
+      globalThis.location.pathname = "/login";
+      const originalHref = globalThis.location.href;
 
       handleUnauthorized();
 
-      expect(window.location.href).toBe(originalHref);
+      expect(globalThis.location.href).toBe(originalHref);
     });
 
     it("should not redirect when on login-related page", () => {
-      window.location.pathname = "/login/forgot-password";
-      const originalHref = window.location.href;
+      globalThis.location.pathname = "/login/forgot-password";
+      const originalHref = globalThis.location.href;
 
       handleUnauthorized();
 
-      expect(window.location.href).toBe(originalHref);
+      expect(globalThis.location.href).toBe(originalHref);
     });
   });
 

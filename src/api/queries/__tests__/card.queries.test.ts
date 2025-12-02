@@ -25,17 +25,19 @@ describe("card.queries", () => {
       const mockCard: CardResponse = {
         id: "card-123",
         name: "Fire Dragon",
-        description: "A powerful dragon",
-        imageUrl: "https://example.com/dragon.jpg",
-        level: 5,
         elixirCost: 3,
-        health: 100,
+        rarity: "Legendary",
+        type: "Troop",
         damage: 50,
-        attackSpeed: 1.5,
-        rarity: "LEGENDARY",
-        cardType: "TROOP",
-        unitClass: "TANK",
         targets: ["Ground", "Air"],
+        attackDetails: {
+          hp: 100,
+          range: 5,
+          unitClass: "Ground",
+        },
+        troopDetails: {
+          visionRange: 7,
+        },
       };
 
       vi.mocked(apiClient.get).mockResolvedValue({
@@ -56,17 +58,16 @@ describe("card.queries", () => {
       const mockCard: CardResponse = {
         id: "card-456",
         name: "Ice Wizard",
-        description: "Freezes enemies",
-        imageUrl: "https://example.com/wizard.jpg",
-        level: 3,
         elixirCost: 2,
-        health: 50,
+        rarity: "Rare",
+        type: "Troop",
         damage: 30,
-        attackSpeed: 1.0,
-        rarity: "RARE",
-        cardType: "TROOP",
-        unitClass: "RANGED",
         targets: ["Ground"],
+        attackDetails: {
+          hp: 50,
+          range: 6,
+          unitClass: "Ground",
+        },
       };
 
       vi.mocked(apiClient.get).mockResolvedValue({
@@ -80,7 +81,7 @@ describe("card.queries", () => {
       const result = await getCardDetailsById("card-456");
 
       expect(result.name).toBe("Ice Wizard");
-      expect(result.rarity).toBe("RARE");
+      expect(result.rarity).toBe("Rare");
     });
 
     it("should throw error when card not found", async () => {
@@ -96,16 +97,10 @@ describe("card.queries", () => {
       const mockCard: CardResponse = {
         id: "card-789",
         name: "Fireball",
-        description: "Area damage spell",
-        imageUrl: "https://example.com/fireball.jpg",
-        level: 1,
         elixirCost: 4,
-        health: 0,
+        rarity: "Common",
+        type: "Spell",
         damage: 80,
-        attackSpeed: 0,
-        rarity: "COMMON",
-        cardType: "SPELL",
-        unitClass: "NONE",
         targets: ["Ground", "Air"],
       };
 
@@ -119,8 +114,8 @@ describe("card.queries", () => {
 
       const result = await getCardDetailsById("card-789");
 
-      expect(result.cardType).toBe("SPELL");
-      expect(result.unitClass).toBe("NONE");
+      expect(result.type).toBe("Spell");
+      expect(result.damage).toBe(80);
     });
   });
 });

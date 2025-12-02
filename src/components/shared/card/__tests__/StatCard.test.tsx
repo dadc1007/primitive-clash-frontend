@@ -12,7 +12,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import StatCard from "../StatCard";
-import type { CardRarity } from "@lib";
 
 describe("StatCard", () => {
   it("should render without rarity (purple theme)", () => {
@@ -39,7 +38,7 @@ describe("StatCard", () => {
         icon={["fas", "heart"]}
         label="HP"
         value={500}
-        rarity="Common" as CardRarity
+        rarity="Common"
       />
     );
 
@@ -53,7 +52,7 @@ describe("StatCard", () => {
         icon={["fas", "bullseye"]}
         label="Damage"
         value={100}
-        rarity="Rare" as CardRarity
+        rarity="Rare"
       />
     );
 
@@ -67,7 +66,7 @@ describe("StatCard", () => {
         icon={["fas", "eye"]}
         label="Range"
         value={8}
-        rarity="Epic" as CardRarity
+        rarity="Epic"
       />
     );
 
@@ -81,7 +80,7 @@ describe("StatCard", () => {
         icon={["fas", "gem"]}
         label="Power"
         value={999}
-        rarity="Legendary" as CardRarity
+        rarity="Legendary"
       />
     );
 

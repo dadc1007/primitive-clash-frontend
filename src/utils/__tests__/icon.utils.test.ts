@@ -15,21 +15,26 @@ import "@utils/icon.utils";
 
 describe("icon.utils", () => {
   it("should add icons to FontAwesome library", () => {
-    // Verificar que la librería tiene definiciones
+    // Verificar que la librería existe y tiene contenido
+    expect(library).toBeDefined();
+    // @ts-expect-error - Accediendo a propiedad interna para testing
     expect(library.definitions).toBeDefined();
   });
 
   it("should have solid icons registered", () => {
+    // @ts-expect-error - Accediendo a propiedad interna para testing
     const definitions = library.definitions;
     expect(definitions.fas).toBeDefined();
   });
 
   it("should have brand icons registered", () => {
+    // @ts-expect-error - Accediendo a propiedad interna para testing
     const definitions = library.definitions;
     expect(definitions.fab).toBeDefined();
   });
 
   it("should have specific solid icons", () => {
+    // @ts-expect-error - Accediendo a propiedad interna para testing
     const solidIcons = library.definitions.fas;
     const expectedIcons = [
       "arrow-left",
@@ -51,17 +56,18 @@ describe("icon.utils", () => {
       "eye",
     ];
 
-    expectedIcons.forEach((iconName) => {
+    for (const iconName of expectedIcons) {
       expect(solidIcons).toHaveProperty(iconName);
-    });
+    }
   });
 
   it("should have specific brand icons", () => {
+    // @ts-expect-error - Accediendo a propiedad interna para testing
     const brandIcons = library.definitions.fab;
     const expectedIcons = ["microsoft", "google", "github"];
 
-    expectedIcons.forEach((iconName) => {
+    for (const iconName of expectedIcons) {
       expect(brandIcons).toHaveProperty(iconName);
-    });
+    }
   });
 });

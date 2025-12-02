@@ -7,7 +7,7 @@
  * - console.log y console.error son llamados con los argumentos correctos
  * - Logs son suprimidos en producción para mejor performance
  */
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { log, logError } from "../log.utils";
 
 describe("log.utils", () => {

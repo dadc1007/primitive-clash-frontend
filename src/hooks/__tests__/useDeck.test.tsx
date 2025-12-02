@@ -43,15 +43,25 @@ describe("useDeck", () => {
 
   it("should fetch deck successfully", async () => {
     const mockDeckData: DeckResponse = {
-      userId: "user-123",
+      deckId: "deck-123",
+      size: 2,
+      averageElixirCost: 3,
       cards: [
         {
+          playerCardId: "player-card-1",
           cardId: "card-1",
+          rarity: "Common",
+          elixirCost: 3,
           level: 1,
+          imageUrl: "https://example.com/card-1.png",
         },
         {
+          playerCardId: "player-card-2",
           cardId: "card-2",
+          rarity: "Rare",
+          elixirCost: 4,
           level: 2,
+          imageUrl: "https://example.com/card-2.png",
         },
       ],
     };
@@ -97,13 +107,35 @@ describe("useDeck", () => {
 
   it("should refetch when userId changes", async () => {
     const mockDeckData1: DeckResponse = {
-      userId: "user-1",
-      cards: [{ cardId: "card-1", level: 1 }],
+      deckId: "deck-1",
+      size: 1,
+      averageElixirCost: 3,
+      cards: [
+        {
+          playerCardId: "player-card-1",
+          cardId: "card-1",
+          rarity: "Common",
+          elixirCost: 3,
+          level: 1,
+          imageUrl: "https://example.com/card-1.png",
+        },
+      ],
     };
 
     const mockDeckData2: DeckResponse = {
-      userId: "user-2",
-      cards: [{ cardId: "card-2", level: 2 }],
+      deckId: "deck-2",
+      size: 1,
+      averageElixirCost: 4,
+      cards: [
+        {
+          playerCardId: "player-card-2",
+          cardId: "card-2",
+          rarity: "Rare",
+          elixirCost: 4,
+          level: 2,
+          imageUrl: "https://example.com/card-2.png",
+        },
+      ],
     };
 
     vi.mocked(deckQueries.getDeckByUserId)

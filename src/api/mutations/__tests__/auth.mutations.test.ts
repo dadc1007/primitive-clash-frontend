@@ -22,11 +22,13 @@ describe("auth.mutations", () => {
   describe("upsertUser", () => {
     it("should call apiClient.post with correct endpoint", async () => {
       const mockResponse: AuthSuccessResponse = {
-        id: "user-123",
+        userId: "user-123",
         email: "test@example.com",
         username: "testuser",
-        createdAt: "2024-01-01T00:00:00Z",
-        updatedAt: "2024-01-01T00:00:00Z",
+        gold: 1000,
+        gems: 50,
+        level: 1,
+        trophies: 0,
       };
 
       vi.mocked(apiClient.post).mockResolvedValue({
@@ -45,11 +47,13 @@ describe("auth.mutations", () => {
 
     it("should return user data from response", async () => {
       const mockResponse: AuthSuccessResponse = {
-        id: "user-456",
+        userId: "user-456",
         email: "another@example.com",
         username: "anotheruser",
-        createdAt: "2024-01-02T00:00:00Z",
-        updatedAt: "2024-01-02T00:00:00Z",
+        gold: 2000,
+        gems: 100,
+        level: 5,
+        trophies: 1500,
       };
 
       vi.mocked(apiClient.post).mockResolvedValue({
@@ -62,7 +66,7 @@ describe("auth.mutations", () => {
 
       const result = await upsertUser();
 
-      expect(result.id).toBe("user-456");
+      expect(result.userId).toBe("user-456");
       expect(result.username).toBe("anotheruser");
     });
 

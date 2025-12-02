@@ -71,14 +71,14 @@ describe("AuthBanner", () => {
   });
 
   it("should apply correct text color classes for login", () => {
-    const { container } = render(<AuthBanner {...defaultProps} />);
+    render(<AuthBanner {...defaultProps} />);
 
     const titleElement = screen.getByText("Welcome Back");
     expect(titleElement).toHaveClass("text-primary-foreground");
   });
 
   it("should apply correct text color classes for signup", () => {
-    const { container } = render(
+    render(
       <AuthBanner {...defaultProps} type="signup" />
     );
 

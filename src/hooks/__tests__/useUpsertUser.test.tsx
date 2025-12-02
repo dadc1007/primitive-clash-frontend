@@ -21,7 +21,6 @@ vi.mock("@api/mutations/auth.mutations");
 
 describe("useUpsertUser", () => {
   let queryClient: QueryClient;
-  let localStorageSpy: Storage;
 
   const wrapper = ({ children }: { children: ReactNode }) => {
     return (
@@ -40,7 +39,6 @@ describe("useUpsertUser", () => {
       },
     });
     
-    localStorageSpy = window.localStorage;
     vi.clearAllMocks();
   });
 
@@ -50,10 +48,13 @@ describe("useUpsertUser", () => {
 
   it("should upsert user successfully and store data in localStorage", async () => {
     const mockUserData: AuthSuccessResponse = {
-      id: "user-123",
+      userId: "user-123",
       username: "testuser",
       email: "test@example.com",
-      token: "mock-token-123",
+      gold: 1000,
+      gems: 50,
+      level: 1,
+      trophies: 0,
     };
 
     vi.mocked(authMutations.upsertUser).mockResolvedValue(mockUserData);
@@ -90,10 +91,13 @@ describe("useUpsertUser", () => {
 
   it("should call upsertUser mutation function", async () => {
     const mockUserData: AuthSuccessResponse = {
-      id: "user-456",
+      userId: "user-456",
       username: "anotheruser",
       email: "another@example.com",
-      token: "another-token",
+      gold: 2000,
+      gems: 100,
+      level: 5,
+      trophies: 1500,
     };
 
     vi.mocked(authMutations.upsertUser).mockResolvedValue(mockUserData);

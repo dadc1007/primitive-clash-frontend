@@ -56,16 +56,15 @@ describe("GameCard", () => {
   const mockCardDetails: CardResponse = {
     id: "card-123",
     name: "Test Card",
-    description: "Test Description",
     elixirCost: 3,
     rarity: "Common",
     type: "Troop",
     targets: ["Ground"],
     damage: 100,
-    imageUrl: "https://example.com/card.png",
     attackDetails: {
       hp: 500,
       range: 5,
+      unitClass: "Ground",
     },
     troopDetails: {
       visionRange: 8,

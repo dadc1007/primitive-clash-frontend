@@ -84,6 +84,7 @@ describe("error.utils", () => {
   describe("isApiError", () => {
     it("should return true for valid ApiError", () => {
       const error: ApiError = {
+        name: "ApiError",
         status: 404,
         message: "Not found",
       };

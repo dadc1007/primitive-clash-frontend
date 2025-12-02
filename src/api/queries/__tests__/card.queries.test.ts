@@ -1,0 +1,126 @@
+/**
+ * @file card.queries.test.ts
+ * @description Tests para queries de obtención de detalles de cartas
+ * 
+ * Valida:
+ * - Llamada a endpoint GET /cards/:cardId con ID correcto
+ * - Retorno de datos completos de carta (stats, rarity, tipo, descripción)
+ * - Manejo de errores cuando carta no existe
+ * - Validación de estructura de respuesta CardResponse
+ */
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { getCardDetailsById } from "../card.queries";
+import apiClient from "@api/apiClient";
+import type { CardResponse } from "@lib";
+
+vi.mock("@api/apiClient");
+
+describe("card.queries", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  describe("getCardDetailsById", () => {
+    it("should call apiClient.get with correct endpoint", async () => {
+      const mockCard: CardResponse = {
+        id: "card-123",
+        name: "Fire Dragon",
+        description: "A powerful dragon",
+        imageUrl: "https://example.com/dragon.jpg",
+        level: 5,
+        elixirCost: 3,
+        health: 100,
+        damage: 50,
+        attackSpeed: 1.5,
+        rarity: "LEGENDARY",
+        cardType: "TROOP",
+        unitClass: "TANK",
+        targets: ["Ground", "Air"],
+      };
+
+      vi.mocked(apiClient.get).mockResolvedValue({
+        data: mockCard,
+        status: 200,
+        statusText: "OK",
+        headers: {},
+        config: {} as any,
+      });
+
+      const result = await getCardDetailsById("card-123");
+
+      expect(apiClient.get).toHaveBeenCalledWith("/cards/card-123");
+      expect(result).toEqual(mockCard);
+    });
+
+    it("should return card data from response", async () => {
+      const mockCard: CardResponse = {
+        id: "card-456",
+        name: "Ice Wizard",
+        description: "Freezes enemies",
+        imageUrl: "https://example.com/wizard.jpg",
+        level: 3,
+        elixirCost: 2,
+        health: 50,
+        damage: 30,
+        attackSpeed: 1.0,
+        rarity: "RARE",
+        cardType: "TROOP",
+        unitClass: "RANGED",
+        targets: ["Ground"],
+      };
+
+      vi.mocked(apiClient.get).mockResolvedValue({
+        data: mockCard,
+        status: 200,
+        statusText: "OK",
+        headers: {},
+        config: {} as any,
+      });
+
+      const result = await getCardDetailsById("card-456");
+
+      expect(result.name).toBe("Ice Wizard");
+      expect(result.rarity).toBe("RARE");
+    });
+
+    it("should throw error when card not found", async () => {
+      const mockError = new Error("Card not found");
+      vi.mocked(apiClient.get).mockRejectedValue(mockError);
+
+      await expect(getCardDetailsById("invalid-id")).rejects.toThrow(
+        "Card not found"
+      );
+    });
+
+    it("should handle different card types", async () => {
+      const mockCard: CardResponse = {
+        id: "card-789",
+        name: "Fireball",
+        description: "Area damage spell",
+        imageUrl: "https://example.com/fireball.jpg",
+        level: 1,
+        elixirCost: 4,
+        health: 0,
+        damage: 80,
+        attackSpeed: 0,
+        rarity: "COMMON",
+        cardType: "SPELL",
+        unitClass: "NONE",
+        targets: ["Ground", "Air"],
+      };
+
+      vi.mocked(apiClient.get).mockResolvedValue({
+        data: mockCard,
+        status: 200,
+        statusText: "OK",
+        headers: {},
+        config: {} as any,
+      });
+
+      const result = await getCardDetailsById("card-789");
+
+      expect(result.cardType).toBe("SPELL");
+      expect(result.unitClass).toBe("NONE");
+    });
+  });
+});

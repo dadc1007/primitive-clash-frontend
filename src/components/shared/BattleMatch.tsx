@@ -1,13 +1,29 @@
+import { log } from "@utils";
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const BattleMatch = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const unityInstanceRef = useRef<any>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const { connectionData } = location.state || {};
 
   useEffect(() => {
+    window.onReturnToLobby = () => {
+      log("🔙 Unity solicitó regresar al lobby");
+
+      // Destruir la instancia de Unity antes de navegar
+      if (unityInstanceRef.current) {
+        unityInstanceRef.current.Quit().then(() => {
+          unityInstanceRef.current = null;
+          navigate("/lobby");
+        });
+      } else {
+        navigate("/lobby");
+      }
+    };
+
     const script = document.createElement("script");
     script.src = "/unity/Build/WebGL.loader.js";
     script.onload = () => {
@@ -34,7 +50,15 @@ const BattleMatch = () => {
       });
     };
     document.body.appendChild(script);
-  }, [connectionData]);
+
+    return () => {
+      log("🧹 Limpiando BattleMatch...");
+      delete window.onReturnToLobby;
+      if (unityInstanceRef.current) {
+        unityInstanceRef.current.Quit();
+      }
+    };
+  }, [connectionData, navigate]);
 
   return (
     <div

@@ -62,30 +62,12 @@ export default function LobbyPage() {
           />
         )}
       </div>
-      <div className="grid grid-cols-4 gap-4 mx-auto">
+      <div className="flex items-center justify-center">
         <LobbyCard
           to="/collection"
           title="Coleccion"
           icon={["fas", "layer-group"]}
           gradientClasses="from-amber-600 to-orange-700"
-        />
-        <LobbyCard
-          to="/shop"
-          title="Tienda"
-          icon={["fas", "store"]}
-          gradientClasses="from-blue-600 to-blue-800"
-        />
-        <LobbyCard
-          to="/friends"
-          title="Amigos"
-          icon={["fas", "users"]}
-          gradientClasses="from-green-600 to-green-800"
-        />
-        <LobbyCard
-          to="/history"
-          title="Historial"
-          icon={["fas", "clock-rotate-left"]}
-          gradientClasses="from-purple-600 to-purple-800"
         />
       </div>
     </div>

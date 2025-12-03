@@ -30,12 +30,21 @@ jobs:
         run: npm run test:coverage
         continue-on-error: true
 
-      - name: SonarCloud Scan
+      - name: SonarCloud Scan (Push)
+        if: github.event_name == 'push'
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: SonarCloud Scan (Pull Request)
+        if: github.event_name == 'pull_request'
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.projectKey=dadc1007_primitivefronted
-            -Dsonar.organization=dadc1007
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+            -Dsonar.pullrequest.branch=${{ github.head_ref }}
+            -Dsonar.pullrequest.base=${{ github.base_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

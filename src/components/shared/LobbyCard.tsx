@@ -22,7 +22,7 @@ export default function LobbyCard({
     <Card
       isPressable
       onPress={() => navigate(to)}
-      className="w-full p-6 bg-background-secondary border-1 border-muted group hover:scale-[1.02] transition-transform duration-300"
+      className="p-6 bg-background-secondary border-1 border-muted group hover:scale-[1.02] transition-transform duration-300"
     >
       <div className="flex flex-col items-center gap-5">
         <div

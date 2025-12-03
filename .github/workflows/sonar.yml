@@ -1,4 +1,5 @@
-name: Build and SonarQube Analysis
+name: Build and SonarCloud Analysis
+
 on:
   push:
     branches:
@@ -6,9 +7,10 @@ on:
       - develop
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  sonarqube:
-    name: SonarQube Analysis
+  sonarcloud:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,7 +30,7 @@ jobs:
         run: npm run test:coverage
         continue-on-error: true
 
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

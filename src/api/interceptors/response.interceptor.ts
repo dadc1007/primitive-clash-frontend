@@ -21,14 +21,15 @@ export const responseErrorInterceptor = async (
 
     handleErrorByStatus(status, data, error.config?.url);
 
+    const errorData = data as unknown as Record<string, unknown>;
     const specificErrorMessage =
-      data?.message || (data as any)?.error || "Error en la petición";
+      data?.message || errorData?.error || "Error en la petición";
 
     throw new ApiError(
       status,
-      specificErrorMessage,
-      (data as any)?.code,
-      (data as any)?.details
+      specificErrorMessage as string,
+      errorData?.code as string | undefined,
+      errorData?.details
     );
   } else if (error.request) {
     logError("Error de red:", error.message);

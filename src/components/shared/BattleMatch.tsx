@@ -2,9 +2,14 @@ import { log } from "@utils";
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+interface UnityInstance {
+  Quit: () => Promise<void>;
+  SendMessage: (gameObject: string, method: string, value: string) => void;
+}
+
 const BattleMatch = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const unityInstanceRef = useRef<any>(null);
+  const unityInstanceRef = useRef<UnityInstance | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { connectionData } = location.state || {};
@@ -27,7 +32,7 @@ const BattleMatch = () => {
     const script = document.createElement("script");
     script.src = "/unity/Build/WebGL.loader.js";
     script.onload = () => {
-      // @ts-ignore
+      // @ts-expect-error - createUnityInstance is loaded from external Unity script
       createUnityInstance(canvasRef.current, {
         dataUrl: "/unity/Build/WebGL.data.unityweb",
         frameworkUrl: "/unity/Build/WebGL.framework.js.unityweb",
@@ -36,7 +41,7 @@ const BattleMatch = () => {
         companyName: "VelociSquad",
         productName: "PrimitiveClash",
         productVersion: "1.0",
-      }).then((unityInstance: any) => {
+      }).then((unityInstance: UnityInstance) => {
         unityInstanceRef.current = unityInstance;
 
         // Enviar datos a Unity

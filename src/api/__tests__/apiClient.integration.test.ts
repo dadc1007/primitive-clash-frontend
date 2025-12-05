@@ -1,12 +1,12 @@
 /**
  * @file apiClient.integration.test.ts
- * @description Tests de integración para configuración de Axios client
+ * @description Integration tests for Axios client configuration
  * 
- * Valida:
- * - Configuración correcta de baseURL desde variables de entorno
- * - Headers por defecto (Content-Type: application/json)
- * - Timeout configurado apropiadamente
- * - Interceptors registrados en instancia
+ * Validates:
+ * - Correct baseURL configuration from environment variables
+ * - Default headers (Content-Type: application/json)
+ * - Appropriate timeout configuration
+ * - Interceptors registered in instance
  */
 import { describe, it, expect, beforeEach } from "vitest";
 import apiClient from "../apiClient";

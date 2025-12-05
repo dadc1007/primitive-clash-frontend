@@ -4,6 +4,7 @@ import type { ApiError, AuthSuccessResponse } from "@lib";
 import { useMsal } from "@azure/msal-react";
 import { log } from "@utils";
 import { useUpsertUser } from "./useUpsertUser";
+import { getUserMatchStatus } from "@api/queries/user.queries";
 
 export interface UseAuthReturn {
   user: AuthSuccessResponse | null;
@@ -26,16 +27,12 @@ export const useAuth = () => {
 
   const login = async () => {
     const loginResponse = await instance.loginPopup({
-      scopes: [
-        "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
-      ],
+      scopes: ["api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation"],
     });
     log("Usuario logueado:", loginResponse.account);
 
     const tokenResponse = await instance.acquireTokenSilent({
-      scopes: [
-        "api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation",
-      ],
+      scopes: ["api://de66ae18-46d3-4b76-b180-b8967383e545/user_impersonation"],
       account: loginResponse.account,
     });
 
@@ -45,7 +42,20 @@ export const useAuth = () => {
     const userData = await upsertUserMutation.mutateAsync();
     setUser(userData);
 
-    navigate("/lobby");
+    const matchStatus = await getUserMatchStatus(userData.userId);
+
+    if (matchStatus.isInMatch && matchStatus.matchId) {
+      log("Usuario en partida activa, redirigiendo a /game");
+
+      const dataToSend = `${matchStatus.matchId}|${
+        userData.userId
+      }|${accessToken}|${import.meta.env.VITE_HUB_URL}/game`;
+
+      navigate("/game", { state: { connectionData: dataToSend } });
+    } else {
+      log("Usuario sin partida activa, redirigiendo a /lobby");
+      navigate("/lobby");
+    }
   };
 
   // Función de logout

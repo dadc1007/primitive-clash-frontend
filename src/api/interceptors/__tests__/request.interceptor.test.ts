@@ -1,12 +1,12 @@
 /**
  * @file request.interceptor.test.ts
- * @description Tests para interceptor de requests Axios con inyección de tokens
+ * @description Tests for Axios request interceptor with token injection
  * 
- * Valida:
- * - Inyección automática de header Authorization con token JWT
- * - Configuración sin token para endpoints públicos
- * - Manejo de errores en interceptor de request
- * - Preservación de headers existentes
+ * Validates:
+ * - Automatic Authorization header injection with JWT token
+ * - Tokenless configuration for public endpoints
+ * - Request interceptor error handling
+ * - Existing headers preservation
  */
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import {

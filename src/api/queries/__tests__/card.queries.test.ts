@@ -1,12 +1,12 @@
 /**
  * @file card.queries.test.ts
- * @description Tests para queries de obtención de detalles de cartas
+ * @description Tests for card details fetch queries
  * 
- * Valida:
- * - Llamada a endpoint GET /cards/:cardId con ID correcto
- * - Retorno de datos completos de carta (stats, rarity, tipo, descripción)
- * - Manejo de errores cuando carta no existe
- * - Validación de estructura de respuesta CardResponse
+ * Validates:
+ * - GET /cards/:cardId endpoint call with correct ID
+ * - Complete card data return (stats, rarity, type, description)
+ * - Error handling when card doesn't exist
+ * - CardResponse structure validation
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getCardDetailsById } from "../card.queries";

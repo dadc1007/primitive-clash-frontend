@@ -1,12 +1,12 @@
 /**
  * @file error.utils.test.ts
- * @description Tests para manejo centralizado de errores de API por status HTTP
+ * @description Tests for centralized API error handling by HTTP status
  * 
- * Valida:
- * - handleErrorByStatus para diferentes códigos (401, 403, 404, 500, etc)
- * - isApiError para validar tipo de error personalizado
- * - Logging apropiado de errores
- * - Mensajes de error personalizados vs genéricos
+ * Validates:
+ * - handleErrorByStatus for different codes (401, 403, 404, 500, etc)
+ * - isApiError for custom error type validation
+ * - Appropriate error logging
+ * - Custom vs generic error messages
  */
 import { describe, it, expect, vi } from "vitest";
 import { handleErrorByStatus, isApiError } from "../error.utils";

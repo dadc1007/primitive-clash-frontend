@@ -1,11 +1,11 @@
 /**
  * @file log.utils.test.ts
- * @description Tests para funciones de logging condicional basado en ambiente
+ * @description Tests for conditional logging functions based on environment
  * 
- * Valida:
- * - Logs solo se ejecutan en desarrollo (NODE_ENV !== 'production')
- * - console.log y console.error son llamados con los argumentos correctos
- * - Logs son suprimidos en producción para mejor performance
+ * Validates:
+ * - Logs only execute in development (NODE_ENV !== 'production')
+ * - console.log and console.error called with correct arguments
+ * - Logs suppressed in production for better performance
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { log, logError } from "../log.utils";

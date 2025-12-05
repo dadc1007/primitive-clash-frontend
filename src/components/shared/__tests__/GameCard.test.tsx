@@ -1,13 +1,13 @@
 /**
  * @file GameCard.test.tsx
- * @description Tests para componente de carta de juego con rendering condicional
+ * @description Tests for game card component with conditional rendering
  * 
- * Valida:
- * - Renderizado correcto de nivel de carta
- * - Clases CSS de raridad (border y shadow)
- * - Manejo de estados de loading y error
- * - Integración con modal de detalles de carta
- * - Datos de carta (nombre, elixir, stats)
+ * Validates:
+ * - Card level rendering
+ * - Rarity CSS classes (border and shadow)
+ * - Loading and error state handling
+ * - Card details modal integration
+ * - Card data (name, elixir, stats)
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";

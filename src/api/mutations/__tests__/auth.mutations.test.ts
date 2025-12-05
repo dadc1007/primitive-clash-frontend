@@ -1,11 +1,11 @@
 /**
  * @file auth.mutations.test.ts
- * @description Tests para mutations de autenticación (upsert de usuario)
+ * @description Tests for authentication mutations (user upsert)
  * 
- * Valida:
- * - Llamada a endpoint POST /auth/upsert-user con datos correctos
- * - Retorno de respuesta con datos de usuario creado/actualizado
- * - Manejo de errores en proceso de upsert
+ * Validates:
+ * - POST /auth/upsert-user endpoint call with correct data
+ * - Response return with created/updated user data
+ * - Error handling in upsert process
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { upsertUser } from "../auth.mutations";

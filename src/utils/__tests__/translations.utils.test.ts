@@ -1,12 +1,12 @@
 /**
  * @file translations.utils.test.ts
- * @description Tests para funciones de traducción de enums del juego a español
+ * @description Tests for game enum translation functions to Spanish
  * 
- * Valida:
- * - Traducción correcta de raridades (COMMON, RARE, EPIC, LEGENDARY)
- * - Traducción de tipos de carta (TROOP, SPELL, BUILDING)
- * - Traducción de clases de unidad (TANK, RANGED, MELEE, etc)
- * - Manejo de valores desconocidos retornando el valor original
+ * Validates:
+ * - Rarity translations (COMMON, RARE, EPIC, LEGENDARY)
+ * - Card type translations (TROOP, SPELL, BUILDING)
+ * - Unit class translations (TANK, RANGED, MELEE, etc)
+ * - Unknown value handling by returning original value
  */
 import { describe, it, expect } from "vitest";
 import {

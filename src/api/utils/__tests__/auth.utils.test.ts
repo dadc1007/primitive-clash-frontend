@@ -1,12 +1,12 @@
 /**
  * @file auth.utils.test.ts
- * @description Tests para utilidades de autenticación y manejo de tokens
+ * @description Tests for authentication utilities and token management
  * 
- * Valida:
- * - Almacenamiento y recuperación de tokens en localStorage
- * - Eliminación de tokens al hacer logout
- * - Manejo de respuesta 401 (unauthorized) con redirección
- * - Limpieza de datos al detectar sesión expirada
+ * Validates:
+ * - Token storage and retrieval from localStorage
+ * - Token removal on logout
+ * - 401 (unauthorized) response handling with redirect
+ * - Data cleanup on expired session detection
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import {

@@ -1,11 +1,11 @@
 /**
  * @file icon.utils.test.ts
- * @description Tests para configuración de FontAwesome icon library
+ * @description Tests for FontAwesome icon library configuration
  * 
- * Valida:
- * - Iconos solid (fas) están registrados en la librería
- * - Iconos brand (fab) están disponibles (Microsoft, Google, GitHub)
- * - Iconos específicos del juego están presentes (trophy, coins, gem, etc)
+ * Validates:
+ * - Solid icons (fas) registered in library
+ * - Brand icons (fab) available (Microsoft, Google, GitHub)
+ * - Game-specific icons present (trophy, coins, gem, etc)
  */
 import { describe, it, expect } from "vitest";
 import { library } from "@fortawesome/fontawesome-svg-core";

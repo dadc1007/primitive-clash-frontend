@@ -1,12 +1,12 @@
 /**
  * @file LobbyCard.test.tsx
- * @description Tests para tarjeta de navegación del lobby con iconos FontAwesome
+ * @description Tests for lobby navigation card with FontAwesome icons
  * 
- * Valida:
- * - Renderizado de título y descripción
- * - Display correcto de iconos FontAwesome
- * - Navegación mediante react-router-dom al hacer clic
- * - Estilos y clases CSS aplicadas
+ * Validates:
+ * - Title and description rendering
+ * - FontAwesome icons display
+ * - Navigation via react-router-dom on click
+ * - Applied CSS styles and classes
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";

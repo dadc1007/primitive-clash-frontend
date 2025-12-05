@@ -1,11 +1,11 @@
 /**
  * @file rarityMapping.utils.test.ts
- * @description Tests para mapeo de raridades a clases CSS de Tailwind
+ * @description Tests for rarity mapping to Tailwind CSS classes
  * 
- * Valida:
- * - Clases correctas de borde y sombra para cada raridad
- * - Estilos específicos: Common, Rare, Epic, Legendary
- * - Consistencia en nombres de clases con configuración de Tailwind
+ * Validates:
+ * - Correct border and shadow classes for each rarity
+ * - Specific styles: Common, Rare, Epic, Legendary
+ * - Consistency in class names with Tailwind configuration
  */
 import { describe, it, expect } from "vitest";
 import { rarityClasses } from "../rarityMapping.utils";

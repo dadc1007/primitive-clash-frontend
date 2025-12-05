@@ -1,12 +1,12 @@
 /**
  * @file apiClient.interceptors.test.ts
- * @description Tests de integración para interceptors de Axios (request y response)
+ * @description Integration tests for Axios interceptors (request and response)
  * 
- * Valida:
- * - Inyección automática de msalAccessToken en requests
- * - Funcionamiento de request interceptors en flujo real
- * - Procesamiento de responses exitosas y con error
- * - Integración completa entre request y response interceptors
+ * Validates:
+ * - Automatic msalAccessToken injection in requests
+ * - Request interceptor functionality in real flow
+ * - Successful and error response processing
+ * - Complete integration between request and response interceptors
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import apiClient from "../apiClient";

@@ -4,3 +4,4 @@ export { useUpsertUser } from "./useUpsertUser";
 export { useDeck } from "./useDeck";
 export { useMatchmaking } from "./useMatchmaking";
 export { useCard } from "./useCard";
+export { useUserMatchStatus } from "./useUser";

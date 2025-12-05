@@ -1,12 +1,12 @@
 /**
  * @file useUpsertUser.test.tsx
- * @description Tests para hook de creación/actualización de usuario con React Query
+ * @description Tests for user creation/update hook with React Query
  * 
- * Valida:
- * - Llamada exitosa a API y almacenamiento en localStorage
- * - Manejo de errores con logging apropiado
- * - Integración con React Query mutation
- * - Persistencia de datos de usuario (id, email, username)
+ * Validates:
+ * - Successful API call and localStorage storage
+ * - Error handling with appropriate logging
+ * - React Query mutation integration
+ * - User data persistence (id, email, username)
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";

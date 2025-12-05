@@ -1,12 +1,12 @@
 /**
  * @file Elixir.test.tsx
- * @description Tests para componente de display de costo de elixir
+ * @description Tests for elixir cost display component
  * 
- * Valida:
- * - Renderizado correcto del costo numérico
- * - Manejo de costo 0
- * - Comportamiento cuando no se proporciona costo (undefined)
- * - Estilos visuales del badge de elixir
+ * Validates:
+ * - Numeric cost rendering
+ * - Zero cost handling
+ * - Undefined cost behavior
+ * - Elixir badge visual styling
  */
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";

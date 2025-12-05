@@ -1,12 +1,12 @@
 /**
  * @file AuthBanner.test.tsx
- * @description Tests para banner de autenticación con estilos condicionales
+ * @description Tests for authentication banner with conditional styling
  * 
- * Valida:
- * - Renderizado de título y slogan
- * - Display de imagen de fondo
- * - Estilos diferentes para tipo login vs signup
- * - Clases CSS aplicadas según el tipo de banner
+ * Validates:
+ * - Title and slogan rendering
+ * - Background image display
+ * - Different styles for login vs signup types
+ * - CSS classes applied by banner type
  */
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";

@@ -1,12 +1,12 @@
 /**
  * @file deck.queries.test.ts
- * @description Tests para queries de obtención de deck de usuario
+ * @description Tests for user deck fetch queries
  * 
- * Valida:
- * - Llamada a endpoint GET /decks/:userId con ID de usuario
- * - Retorno de deck completo con todas sus cartas
- * - Estructura correcta de DeckResponse con array de cartas
- * - Manejo de errores cuando usuario no tiene deck
+ * Validates:
+ * - GET /decks/:userId endpoint call with user ID
+ * - Complete deck return with all cards
+ * - Correct DeckResponse structure with card array
+ * - Error handling when user has no deck
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getDeckByUserId } from "../deck.queries";

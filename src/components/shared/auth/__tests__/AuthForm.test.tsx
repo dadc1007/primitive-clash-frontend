@@ -1,13 +1,13 @@
 /**
  * @file AuthForm.test.tsx
- * @description Tests para formulario de autenticación con validación y manejo de errores
+ * @description Tests for authentication form with validation and error handling
  * 
- * Valida:
- * - Renderizado de campos de email y contraseña
- * - Envío de formulario con datos correctos
- * - Display de mensajes de error de validación y API
- * - Integración con useAuth hook para login
- * - Renderizado de footer con link
+ * Validates:
+ * - Email and password field rendering
+ * - Form submission with correct data
+ * - Validation and API error message display
+ * - useAuth hook integration for login
+ * - Footer rendering with link
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";

@@ -1,12 +1,12 @@
 /**
  * @file InfoCard.test.tsx
- * @description Tests para tarjeta de información con label e icono
+ * @description Tests for information card component with label and icon
  * 
- * Valida:
- * - Renderizado de label y contenido children
- * - Display correcto de iconos FontAwesome
- * - Composición flexible con diferentes tipos de children
- * - Layout y estilos de la tarjeta
+ * Validates:
+ * - Label and children content rendering
+ * - FontAwesome icon display
+ * - Flexible composition with different children types
+ * - Card layout and styling
  */
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";

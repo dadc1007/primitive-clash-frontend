@@ -1,12 +1,12 @@
 /**
  * @file useDeck.test.tsx
- * @description Tests para hook de obtención de deck de usuario con React Query
+ * @description Tests for user deck retrieval hook with React Query
  * 
- * Valida:
- * - Carga exitosa de deck con sus cartas
- * - Estados de loading, error y success
- * - Refetch manual del deck
- * - Integración con cache de React Query
+ * Validates:
+ * - Successful deck loading with cards
+ * - Loading, error, and success states
+ * - Manual deck refetching
+ * - React Query cache integration
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";

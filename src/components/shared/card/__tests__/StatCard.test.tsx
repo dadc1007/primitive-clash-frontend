@@ -1,13 +1,13 @@
 /**
  * @file StatCard.test.tsx
- * @description Tests para tarjeta de estadísticas con tematización por raridad
+ * @description Tests for stat card component with rarity-based theming
  * 
- * Valida:
- * - Renderizado con tema purple por defecto (sin raridad)
- * - Valores numéricos y string
- * - Tematización dinámica según raridad (Common, Rare, Epic, Legendary)
- * - Clases CSS correctas para cada tema
- * - Display de iconos y labels
+ * Validates:
+ * - Default purple theme rendering (no rarity)
+ * - Numeric and string value display
+ * - Dynamic theming by rarity (Common, Rare, Epic, Legendary)
+ * - Correct CSS classes for each theme
+ * - Icon and label display
  */
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";

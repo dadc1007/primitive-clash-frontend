@@ -1,12 +1,12 @@
 /**
  * @file Header.test.tsx
- * @description Tests para componente de encabezado con información de usuario
+ * @description Tests for header component with user information
  * 
- * Valida:
- * - Renderizado de username y email del usuario autenticado
- * - Display de recursos (gold, gems, trophies) con iconos
- * - Manejo de estados cuando no hay usuario logueado
- * - Integración con hook useAuth
+ * Validates:
+ * - Username and email rendering for authenticated user
+ * - Resources display (gold, gems, trophies) with icons
+ * - Handling state when no user is logged in
+ * - Integration with useAuth hook
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";

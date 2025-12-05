@@ -1,12 +1,12 @@
 /**
  * @file CombatStatCard.test.tsx
- * @description Tests para tarjeta de estadísticas de combate con esquemas de color
+ * @description Tests for combat stat card component with color schemes
  * 
- * Valida:
- * - Renderizado con esquemas de color (red, green, blue)
- * - Display correcto de valores numéricos y string
- * - Clases CSS apropiadas por esquema de color
- * - Iconos y labels de estadísticas de combate
+ * Validates:
+ * - Rendering with color schemes (red, green, blue)
+ * - Numeric and string value display
+ * - Appropriate CSS classes per color scheme
+ * - Combat stat icons and labels
  */
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";

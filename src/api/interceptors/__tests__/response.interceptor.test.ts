@@ -1,13 +1,13 @@
 /**
  * @file response.interceptor.test.ts
- * @description Tests para interceptor de responses Axios con manejo de errores HTTP
+ * @description Tests for Axios response interceptor with HTTP error handling
  * 
- * Valida:
- * - Procesamiento exitoso de responses 2xx
- * - Creación de ApiError personalizado para errores 4xx/5xx
- * - Manejo especial de 401 (unauthorized) con cleanup
- * - Extracción de mensajes de error de response body
- * - Logging de errores y responses
+ * Validates:
+ * - Successful 2xx response processing
+ * - Custom ApiError creation for 4xx/5xx errors
+ * - Special 401 (unauthorized) handling with cleanup
+ * - Error message extraction from response body
+ * - Error and response logging
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import {

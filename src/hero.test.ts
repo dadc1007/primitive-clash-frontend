@@ -1,13 +1,13 @@
 /**
  * @file hero.test.ts
- * @description Tests para archivo de configuración/tipos hero.ts
+ * @description Tests for hero.ts configuration/types file
  * 
- * Valida:
- * - Existencia del archivo TypeScript
- * - Importación exitosa sin errores de compilación
+ * Validates:
+ * - TypeScript file existence
+ * - Successful import without compilation errors
  * 
- * Nota: Este archivo probablemente contiene definiciones de tipos o configuraciones
- * que no requieren validación lógica compleja.
+ * Note: This file likely contains type definitions or configurations
+ * that don't require complex logical validation.
  */
 import { describe, it, expect } from "vitest";
 

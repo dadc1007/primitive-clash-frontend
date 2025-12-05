@@ -1,12 +1,12 @@
 /**
  * @file authConfig.test.ts
- * @description Tests para configuración de autenticación Azure AD B2C con MSAL
+ * @description Tests for Azure AD B2C authentication configuration with MSAL
  * 
- * Valida:
- * - Existencia de objeto msalConfig
- * - Propiedades requeridas (clientId, authority, redirectUri)
- * - Estructura correcta de configuración MSAL
- * - Cache configuration para autenticación
+ * Validates:
+ * - msalConfig object existence
+ * - Required properties (clientId, authority, redirectUri)
+ * - Correct MSAL configuration structure
+ * - Cache configuration for authentication
  */
 import { describe, it, expect } from "vitest";
 import { msalConfig } from "./authConfig";

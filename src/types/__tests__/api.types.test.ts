@@ -1,11 +1,11 @@
 /**
  * @file api.types.test.ts
- * @description Tests para la clase ApiError personalizada que encapsula errores de API
+ * @description Tests for custom ApiError class that encapsulates API errors
  * 
- * Valida:
- * - Creación de errores con status, mensaje, código y detalles
- * - Herencia correcta de la clase Error nativa
- * - Captura de stack trace para debugging
+ * Validates:
+ * - Error creation with status, message, code and details
+ * - Correct native Error class inheritance
+ * - Stack trace capture for debugging
  */
 import { describe, it, expect } from "vitest";
 import { ApiError } from "../api.types";

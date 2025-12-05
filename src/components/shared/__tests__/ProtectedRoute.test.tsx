@@ -1,11 +1,11 @@
 /**
  * @file ProtectedRoute.test.tsx
- * @description Tests para componente de rutas protegidas con autenticación
+ * @description Tests for protected routes component with authentication
  * 
- * Valida:
- * - Renderiza children (Outlet) cuando el usuario está autenticado
- * - Redirige a /auth/login cuando el usuario no está autenticado
- * - Integración con useAuth hook y react-router-dom
+ * Validates:
+ * - Renders children (Outlet) when user is authenticated
+ * - Redirects to /auth/login when user is not authenticated
+ * - Integration with useAuth hook and react-router-dom
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";

@@ -1,12 +1,12 @@
 /**
  * @file useCard.test.tsx
- * @description Tests para hook de obtención de detalles de carta con React Query
+ * @description Tests for card details retrieval hook with React Query
  * 
- * Valida:
- * - Carga de datos de carta por ID (stats, rarity, tipo)
- * - Estados de loading y error
- * - Deshabilitación de query cuando no hay cardId
- * - Cache y refetch de datos
+ * Validates:
+ * - Card data loading by ID (stats, rarity, type)
+ * - Loading and error states
+ * - Query disabled when no cardId provided
+ * - Data caching and refetching
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
